@@ -1,0 +1,38 @@
+<div mdbModal #frameModalAviso="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameModalAviso.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 " style="font-family: Gotham-Book; font-size: 20px; text-align: justify;">
+       {{mensaje}}
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameModalAviso.hide()" mdbWavesEffect>Cerrar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

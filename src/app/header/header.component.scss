@@ -1,0 +1,31 @@
+::ng-deep .navCss nav
+{
+      background-color: #AE105A;
+}
+
+
+a.submen:hover{
+      background-color: #AE105A !important;
+      color: white !important;
+}
+
+a.men:hover{
+      background-color: white !important;
+      color: #AE105A !important;
+      opacity: 0.8 !important;
+      border-radius: 20px !important;
+}
+
+a.men:active {
+      color: white !important;
+      opacity: 0.5 !important;
+}
+
+.mymodalconfirm .modal-header{  
+      background-color: #AE105A !important;
+  }
+  
+  .boton-primario{
+      color: #AE105A; 
+      border: 2px solid #AE105A;
+  }

@@ -1,0 +1,71 @@
+::ng-deep .navCss nav
+{
+      background-color: #AE105A;
+}
+
+.footer{  
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    line-height: 60px;
+  }
+
+  .boton-primario{
+    color: #AE105A; 
+    border: 2px solid #AE105A;
+}
+
+.texto-medio{
+    font-family: Gotham-medium !important; 
+}
+
+textarea:focus,  input:focus, input[type]:focus {
+    border-color: #AE105A !important;
+    box-shadow: 0 1px 1px  #AE105A inset, #C15098 0 0 8px  !important;
+    outline: 0 none !important;
+}
+
+.texto-titulo{
+    font-family: Gotham !important;
+    font-size: 35px !important;
+}
+
+
+
+.texto-primario-center{
+    color: #AE105A !important;
+    text-align: center;
+}
+
+@media only screen and (max-width: 992px) {  
+    .texto-primario{
+        color: #AE105A !important;
+        text-align: left;
+    }
+} 
+
+@media only screen and (min-width: 993px) {  
+    .texto-primario{
+        color: #AE105A !important;
+        text-align: right;
+    }
+
+    .margen{
+        padding-right: 40px;
+    }
+} 
+
+@media only screen and (max-width: 992px) {  
+    .separador{
+        height: 50px;
+        display: block;
+    }
+} 
+
+.texto-bajo{
+    font-family: Gotham-Book !important; 
+}
+
+.mymodalconfirm .modal-header{  
+    background-color: #AE105A !important;
+}

@@ -1,0 +1,166 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<form [formGroup]="form" (ngSubmit)="guardarReunion();">
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                          
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Solicitar Reunión</p>
+                                <div style="height: 80px;"></div>
+
+                                    <div class="card-body z-depth-1" >
+                                        <div class="row ">
+                                            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                                    <div class="row " style="text-align: justify">
+                                                        <div class="col-12 col-md-12 col-lg-6 col-xl-6" ></div>
+                                                        <div class="col-12 col-md-12 col-lg-6 col-xl-6" style=" padding-left: 75px;">
+                                                        </div>
+
+                                                        <div class="col-12 col-md-12 col-lg-9 col-xl-9" style="margin-bottom: 20px;">
+                                                            <span class="texto-bajo" >Asunto</span><span style="color: red;">*</span>
+                                                        </div>
+                                                        <div class="col-12 col-md-12 col-lg-3 col-xl-3 pl-0 pr-0">
+                                                            
+                                                        </div>
+
+                                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12" >
+                                                            <textarea formControlName="asunto"  type="text" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control texto-bajo" rows="8" mdbInput maxlength="3000"  style="background-color: white;"></textarea>
+                                                            <div style="text-align: right;">
+                                                                {{form.value.asunto.length}}/3000
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-12 col-lg-9 col-xl-9" >
+                                                        
+                                                        </div>
+                                                        
+                                                        <div class="col-12 col-md-12 col-lg-3 col-xl-3" style="margin-top: 10px;" >
+                                                            <button mdbBtn type="submit"  class="btn-block texto-medio boton-primario" [disabled]=" form.value.asunto === '' "  outline="true" >Nueva Reunión</button>
+                                                        </div>
+                                                        
+                                                        <div style="height: 20px;"></div>
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card"  style="margin-top: 20px; margin: 15px;">
+                                            <h3 class="card-header text-center font-weight-bold text-uppercase py-4" ></h3>
+                                                <div class="card-body">
+                                                    <div>
+                                                        <table  mdbTable  #tableEl="mdbTable" class="table table-bordered table-responsive-md  texto-bajo" mdbTableScroll  scrollY="true" maxHeight="400" style="width: 100%;">
+                                                            <thead>
+                                                                <tr style=" background-color: #AE105A; color: white; ">
+                                                                    <th class="text-center" >Folio</th>
+                                                                    <th class="text-center" >No. Reunión</th>
+                                                                    <th class="text-center" >Asunto</th>
+                                                                    <th class="text-center" >Estatus</th>
+                                                                    <th class="text-center" >Adjuntar Minuta</th>
+                                                                    </tr>
+                                                            </thead>
+                                                            
+                                                            <tbody>
+                                                                <tr *ngFor="let fc of formPreconsulta; let i = index">
+                                                                    <td >
+                                                                        <span >{{fc.folio}}</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span >{{fc.subpregunta}}</span>
+                                                                    </td>
+                                                                    <td >
+                                                                        <span style="word-break: break-all;">{{fc.respuesta}}</span>
+                                                                    </td>
+                                                                    <td >
+                                                                        <span *ngIf="fc.rutaArchivo == null || fc.rutaArchivo === '' ">Pendiente</span>
+                                                                        <span *ngIf="fc.rutaArchivo != null && fc.rutaArchivo != '' ">Realizada</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <fa-icon  *ngIf="fc.rutaArchivo == null || fc.rutaArchivo === '' " [icon]="faFileUpload"  mdbTooltip="Cargar Minuta"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="cargarMinuta(fc.folio, fc.subpregunta);" ></fa-icon>
+                                                                        <fa-icon  *ngIf="fc.rutaArchivo != null && fc.rutaArchivo != '' "  [icon]="faFileDownload"  mdbTooltip="Descargar Minuta"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargarMinuta(fc.rutaArchivo,10);" ></fa-icon>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+
+
+                                    </div>
+
+                                <div class="" style="height: 30px;" ></div>
+                            </div>
+                         
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>
+
+<form [formGroup]="formAprobar" (ngSubmit)="aceptar();">
+    <div mdbModal #frameOk="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+      tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+      <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content ">
+    
+          <!--Header-->
+          <div class="modal-header  darken-3 white-text text-center">
+            <h4 class="title" style="font-family: Gotham-medium;">
+              Adjuntar Minuta</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="frameOk.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    
+          <!--Body-->
+         
+            <div class="modal-body mb-0 " style="font-family: Gotham-Book; font-size: 20px;">
+                <span>Favor de adjuntar el documento de minuta</span><span style="color: red;">*</span>
+                <div class="md-form input-group mb-3 ">
+                    <input type="file"  mdbBtn class="form-control m-0 px-3 py-2" aria-describedby="button-addon2" id="aprobar" (change)="onFileChange($event)" #fileInput accept=".zip, .pdf">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="padding: 0px; margin: 0px;">
+                      <div class="row" style="padding: 0px; margin: 0px;"> 
+                        
+                        <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo-primario" style="padding: 0px; margin: 0px; font-size: 10px; text-align: right;">
+                          <span>Todo documento electrónico que sea compartido deberá de adjuntarse en formato PDF o en ZIP y su tamaño, no deberá exceder de 10 MB</span>
+                        </div>
+                      </div>
+                   </div>
+                </div>
+            </div>
+            <div class="text-center" style="font-family: Gotham-Book;">
+                
+                <div class="row " >
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                       
+                        <button mdbBtn type="button"  class=" texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="frameOk.hide()"  outline="true"  mdbWavesEffect>Cancelar</button>
+                        <button mdbBtn type="submit"  class=" texto-medio boton-primario "  (click)="frameOk.hide()" outline="true" [disabled]="acceptarFuno.upload.filename === ''"  mdbWavesEffect>Aceptar</button>
+                    </div>
+                </div>
+                <div style="height: 20px;"></div>
+          </div>
+       
+    
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
+    </form>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Cargando </p></ngx-spinner>

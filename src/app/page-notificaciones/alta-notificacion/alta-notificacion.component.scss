@@ -1,0 +1,51 @@
+.texto-titulo{
+    font-family: Gotham !important;
+    font-size: 20px !important;
+}
+
+
+
+.texto-primario-center{
+    color: #AE105A !important;
+    text-align: center;
+}
+
+.texto-bajo{
+    font-family: Gotham-Book !important; 
+}
+
+.file-input {
+    display: none;
+}
+
+.boton-primario{
+    color: #AE105A; 
+    border: 2px solid #AE105A;
+}
+
+.texto-medio{
+    font-family: Gotham-medium !important; 
+}
+
+textarea {
+    resize: none;
+ }
+
+ .mymodalconfirm .modal-header{  
+    background-color: #AE105A !important;
+}
+
+input[type=text]:focus:not([readonly]) + label {
+    color: #AE105A; 
+}
+
+input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #AE105A;
+    box-shadow: 0 1px 0 0 #AE105A; 
+}
+
+textarea:focus,  input:focus, input[type]:focus {
+    border-color: #AE105A !important;
+    box-shadow: 0 1px 1px  #AE105A inset, #C15098 0 0 8px  !important;
+    outline: 0 none !important;
+}

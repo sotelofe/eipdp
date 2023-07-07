@@ -1,0 +1,151 @@
+<mdb-navbar  SideClass="navbar navbar-expand-lg navbar-dark" class="navCss" [containerInside]="false">
+    <mdb-navbar-brand>
+        <a class="navbar-brand white-text" style="font-family: Gotham">EIPDP</a>
+    </mdb-navbar-brand>   
+</mdb-navbar>
+<div style="background-color: #AE105A  ; border: 1px solid; height: 100px;   filter: blur(1px); -webkit-filter: blur(4px);"></div>
+
+
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                          <form #formLogin="ngForm" (ngSubmit)="actualizarPass()">
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Actualizar Contraseña</p>
+                                <div style="height: 50px;" *ngIf="actualizar"></div>
+                                <div class="row " style="padding: 40px;">
+                                    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 texto-primario texto-bajo" *ngIf="actualizar">
+
+                                          <div class="form-group row">
+                                            <!-- Default input -->
+                                            <label for="input" class="col-sm-5 col-md-5 col-lg-5 col-xl-5 col-form-label">Usuario <span style="color: red;">*</span></label>
+                                            <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 ">
+                                              <input mdbInput type="text" class="form-control" id="input" 
+                                              name="user" #user="ngModel" [(ngModel)]="responseLogin.usuario.usuario" required disabled >
+                                            </div>
+                                          </div>
+                                     
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputPass" class="col-sm-5 col-md-5 col-lg-5 col-xl-5 col-form-label">Contraseña <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 ">
+                                                  <input mdbInput type="{{tipo}}" class="form-control" id="inputPass" maxlength="50" placeholder="" mdbTooltip="La contraseña debe contener al menos 8 caracteres y al menos una letra mayúscula, minúscula, un número, un carácter especial !  # $ % & ' ( ) * + , \ -. / : ; < = > ? @ [ ] ^ _ ` { | } &quot; "
+                                                  name="contrasena" #contrasena="ngModel" [(ngModel)]="formUsuario.contrasena" required >
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputRepetirPass" class="col-sm-5 col-md-5 col-lg-5 col-xl-5 col-form-label">Repetir Contraseña <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7">
+                                                  <input mdbInput type="{{tipod}}" class="form-control" id="inputRepetirPass" maxlength="50" placeholder=""
+                                                  name="repetirContrasena" #repetirContrasena="ngModel" [(ngModel)]="formUsuario.repetirContrasena" required>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="form-group row">
+                                              <!-- Default input -->
+                                              <label for="inputRepetirPass" class="col-sm-5 col-md-5 col-lg-5 col-xl-5 col-form-label"> </label>
+                                              <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7">
+                                                <span style="font-size: 10px; text-align: center;">{{textoPass}}&nbsp;&nbsp;</span> <i class="{{icon}}" style="cursor: pointer;" (click)="verPass();"></i>
+                                              </div>
+                                             
+                                          </div>
+                                           
+                                    </div>
+                                   
+                                    
+
+                                </div>
+
+                                <div class="row " *ngIf="actualizar">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-1 mb-md-1 stycont">
+                                        <div class="row stycont">
+
+                                          
+                                          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 stycont">
+                                          </div>
+
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont" >
+                                           
+                                          </div>
+
+                                          <div class="separador"></div>
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont">
+                                            <button mdbBtn type="submit"  class="btn-block texto-medio boton-primario" outline="true"  [disabled]="formLogin.invalid" mdbWavesEffect>Actualizar</button>
+                                          </div>
+
+                                        </div>
+                                      </div>
+                                </div>
+
+                                <div style="height: 200px;" *ngIf="actualizar"></div>
+                                <div class="alert alert-success" role="alert"  style="font-family: Gotham-bajo;" *ngIf="!actualizar">
+                                    <h4 class="alert-heading">¡Aviso!</h4>
+                                    <hr>
+                                    <div>Este enlace ya ha sido utilizado, favor de realizar una nueva petición</div>
+                                    <div style="height: 150px;" *ngIf="!actualizar"></div>
+                                 </div>
+                                 <div style="height: 150px;" *ngIf="!actualizar"></div>
+                            </div>
+                          </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+
+
+
+<div class="footer " style="background-color: #AE105A ; border: 1px solid; height: 100px; filter: blur(8px); -webkit-filter: blur(8px);"></div>
+
+<div mdbModal #frameActualiza="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          ¡Aviso!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameActualiza.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>Sus credenciales de acceso han sido actualizadas correctamente
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameActualiza.hide(); login();" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Cargando... </p></ngx-spinner>

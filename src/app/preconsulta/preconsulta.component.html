@@ -1,0 +1,641 @@
+<app-header></app-header>
+<form [formGroup]="form" (ngSubmit)="guardarCuestionario();">
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                         
+                            <div class="  z-depth-4">
+                                <div style="height: 30px;"></div>
+
+                                <div class="row ">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                            <div class="row " style="text-align: justify">
+                                                <div class="col-12 col-md-12 col-lg-9 col-xl-9" ></div>
+                                                <div class="col-12 col-md-12 col-lg-3 col-xl-3 pl-0 pr-0">
+                                                </div>
+                                                
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0 texto-font-color" >
+                                                    <mdb-tabset #staticTabs [buttonClass]="'nav md-pills custom-class mb-2'" [justified]="true" [contentClass]="'card'">
+                                                        <!--Panel 1-->
+                                                        <mdb-tab heading="Autoevaluación">
+                                                          <div class="row" >
+                                                            <div class="col-12" >
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="border: 1px solid #AE105A !important; border-radius: 5px; padding:20px; background-color: #AE105A;  color: white ;" >
+                                                                    <p class="texto-bajo">Antes de presentar una consulta respecto a la obligación de elaborar y presentar una EIPDP le sugerimos realizar el Cuestionario interactivo de autoevaluación disponible en: </p>
+                                                                    <p class="texto-bajo">Enlace...</p>
+                                                                </div>
+                
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 " style="height: 20px; border-color: 1px solid black !important;">
+                                                                </div>
+                
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" >
+                                                                    <p class="texto-bajo">En caso de haberlo realizado, indique su resultado:</p>
+                                                                </div>
+                                                                
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo " >
+                                                                   
+
+                                                                  <div class="custom-control custom-radio">
+                                                                    <input type="radio" class="custom-control-input radio-item" id="checkeda" name="defaultExampleRadios" mdbInput>
+                                                                    <label class="custom-control-label" for="checkeda" (click)="setCheckboxesValue('A')">A</label>
+                                                                  </div>
+                
+                                                                      <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input radio-item" id="checkedb" name="defaultExampleRadios" mdbInput>
+                                                                        <label class="custom-control-label" for="checkedb" (click)="setCheckboxesValue('B')">B</label>
+                                                                      </div>
+                                                                      
+                                                                      <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="checkedf" name="defaultExampleRadios" mdbInput>
+                                                                        <label class="custom-control-label" for="checkedf" (click)="setCheckboxesValue('CD')">C Y D</label>
+                                                                      </div>
+
+                                                                      <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="checkedg" name="defaultExampleRadios" mdbInput>
+                                                                        <label class="custom-control-label" for="checkedg" (click)="setCheckboxesValue('CE')">C Y E</label>
+                                                                      </div>
+                                                                      
+                                                                      <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="checkede" name="defaultExampleRadios" mdbInput>
+                                                                        <label class="custom-control-label" for="checkede" (click)="setCheckboxesValue('CF')">C Y F</label>
+                                                                      </div>
+
+                                                                      <div class="custom-control custom-radio">
+                                                                        <input type="radio" class="custom-control-input" id="checkedcg" name="defaultExampleRadios" mdbInput>
+                                                                        <label class="custom-control-label" for="checkedcg" (click)="setCheckboxesValue('CG')">C Y G</label>
+                                                                      </div>
+                                                                      
+                                                                      
+                                                                </div>
+                                                               
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 " style="height: 50px;">
+                                                                </div>
+                
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo" *ngIf='formPreconsulta.radioPreconsulta ==="A" ' >
+                                                                  <p  style="font-weight: bold;" class="texto-bajo-primario">Resultado A</p>
+                                                                  <p>*En el caso de haber obtenido el Resultado A, se advierte que no hay indicios suficientes para determinar la elaboración de una EIPDP por lo cual no procede su
+                                                                    seguimiento.</p>                                                                                                                                    
+                                                              </div>
+
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo" *ngIf='formPreconsulta.radioPreconsulta ==="B" ' >
+                                                                    <p  style="font-weight: bold;" class="texto-bajo-primario">Resultado B</p>
+                                                                    <p>Señale los tratamientos que realiza sobre los cuales tiene duda de que configuren un tratamiento intensivo o relevante de datos personales de carácter general o particular:</p>
+                                                                    <textarea formControlName="radioPreconsultab"  type="text" id="form7" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                    <div style="text-align: right;">{{form.value.radioPreconsultab.length}}/3000</div>
+                                                                </div>
+
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo" *ngIf='formPreconsulta.radioPreconsulta ==="CF" || formPreconsulta.radioPreconsulta ==="CG" ' >
+                                                                  <p  style="font-weight: bold;" class="texto-bajo-primario">Resultado C y F o C y G</p>
+                                                                  <p>Proporcione más información del porque considera que es necesario elaborar una EIPDP y no presentar un informe de exención:</p>
+                                                                  <textarea formControlName="radioPreconsultaf"  type="text" id="form7" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                  <div style="text-align: right;">{{form.value.radioPreconsultaf.length}}/3000</div>
+                                                                </div>
+                
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo" *ngIf='formPreconsulta.radioPreconsulta ==="CD"  || formPreconsulta.radioPreconsulta ==="CE" ' >
+                                                                    <p  style="font-weight: bold;" class="texto-bajo-primario">Resultado  C y D o C y E</p>
+                                                                    <p>Tome en cuenta que la tramitación de una consulta respecto a la obligación de elaborar y presentar una EIPDP tiene un plazo de 15 días hábiles contados a partir del día siguiente de su recepción, por lo que, se sugiere considerar si el tratamiento que pretende implementar es de urgencia se contacte directamente con la Dirección General de Normatividad y Consulta o en su caso indique si es posible aplazar la puesta en operación o modificación de una política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que implique un tratamiento intensivo o relevante de datos personales:</p>
+                                                                    <textarea formControlName="radioPreconsultaeg1"  type="text" id="form7" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                    <div style="text-align: right;">{{form.value.radioPreconsultaeg1.length}}/3000</div>
+                                                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 " style="height: 50px;">
+                                                                    </div>
+                                                                    <p>Señale las razones por las cuales el aplazamiento de la puesta en operación o modificación de la de una política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que implique un tratamiento intensivo o relevante de datos personales no afecta su implementación e indique la nueva fecha de manera tentativa o probable:</p>
+                                                                    <textarea formControlName="radioPreconsultaeg2"  type="text" id="form7" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                    <div style="text-align: right;">{{form.value.radioPreconsultaeg2.length}}/3000</div>
+                                                                </div>
+                
+                                                                
+                
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo" *ngIf='formPreconsulta.radioPreconsulta ==="B"  || formPreconsulta.radioPreconsulta ==="CD" || formPreconsulta.radioPreconsulta ==="CE"  || formPreconsulta.radioPreconsulta ==="CF" || formPreconsulta.radioPreconsulta ==="CG" '>
+                                                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 " style="height: 50px;">
+                                                                    </div>
+                                                                    <p  style="font-weight: bold;" class="texto-bajo-primario" >Finalmente, en caso de considerarlo necesario, proporcione los resultados obtenidos del cuestionario interactivo de autoevaluación:</p>
+                                                                    <p>Cargue el archivo correspondiente: </p>
+                                                                    <div class="md-form input-group mb-3">
+                                                                       
+                                                                            <div class="md-form input-group mb-3 ">
+                                                                                <input type="file"  mdbBtn class="form-control m-0 px-3 py-2" aria-describedby="button-addon2" id="resultados" (change)="onFileChange($event);" #fileInput accept=".pdf">
+                                                                            </div>
+                                                                            <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="padding: 0px; margin: 0px;">
+                                                                              <div class="row" style="padding: 0px; margin: 0px;"> 
+                                                                                <div class="col-9 col-md-9 col-lg-9 col-xl-9" style="padding: 0px; margin: 0px;"></div>
+                                                                                <div class="col-3 col-md-3 col-lg-3 col-xl-3 texto-bajo-primario" style="padding: 0px; margin: 0px; font-size: 14px;">
+                                                                                  <span>Peso máximo: 2 mb, extensión: .pdf</span>
+                                                                                </div>
+                                                                              </div>
+                                                                           </div>
+                                                                      </div>
+                                                                      
+                                                                </div>
+                                                                
+                                                              
+                
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 " style="height: 250px;" *ngIf='formPreconsulta.radioPreconsulta ===""'>
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                        </mdb-tab>
+                                                        <!--Panel 2-->
+                                                        <mdb-tab heading="Cuestionario">
+                                                          <div class="row" style="text-align: justify; padding: 0px; margin: 0px;">
+                                                            <div class="col-12" style="text-align: justify; padding: 0px; margin: 0px;">
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 " style="text-align: justify; padding: 0px; margin: 0px;">
+                                                                    
+
+                                                                        <div class=" overflow-auto" style="text-align: justify; padding: 0px; margin: 0px;" > 
+
+                                                                            <div style=" width: 1068px;" >
+                                                                                <div class="" style="height: 50px;" ></div>
+                                                                                <div style="border: 1px solid #AE105A !important; border-radius: 5px; padding:20px; margin-left: 70px; margin-right: 40px;"><p>Todos los campos marcados con <span class="required">*</span> son obligatorios.</p></div>
+                                                                                
+                                                                                <mdb-accordion [multiple]="false" aria-multiselectable="true" >
+                                                                                    <mdb-accordion-item  [collapsed]="false"  >
+                                                                                        <mdb-accordion-item-head >
+                                                                                            <button mat-mini-fab style="background-color:#AE105A;" aria-label="">
+                                                                                              <span class="texto-bajo" style="font-size: 20px; color:white">1</span>
+                                                                                            </button>&nbsp;&nbsp;
+                                                                                            <span style="color: #AE105A;">
+                                                                                              Descripción detallada del tratamiento de datos personales que se pretende efectuar o modificar
+                                                                                            </span>
+                                                                                         
+                                                                                      </mdb-accordion-item-head>
+                                                                                        <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                          <mdb-accordion-item-body>
+                                                                                              
+                                                                                             
+
+
+                                                                                              <div class="md-form input-group mb-3">
+                                                                                                <div style="height: 10px;">
+                                                                                                    <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                                </div>
+                                                                                                <div class="md-form input-group mb-3 ">
+                                                                                                    <input type="file"  mdbBtn class="form-control m-0 px-3 py-2" style="background-color: white;" aria-describedby="button-addon2" id="descripcion" (change)="onFileChange2($event)" #fileInput accept=".zip, .pdf">
+                                                                                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="padding: 0px; margin: 0px;">
+                                                                                                      <div class="row" style="padding: 0px; margin: 0px;"> 
+                                                                                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo-primario" style="padding: 0px; margin: 0px; font-size: 12px; text-align: right;">
+                                                                                                          <span>Todo documento electrónico que sea compartido deberá de adjuntarse en formato PDF o en ZIP y su tamaño, no deberá exceder de 10 MB</span>
+                                                                                                        </div>
+                                                                                                      </div>
+                                                                                                   </div>
+                                                                                                 </div>
+                                                                                              </div>
+                                                                                              <div>
+                                                                                                <p class="texto-bajo texto-bajo-primario" style="font-size: 18px; font-weight: bold">Seleccione los requisitos que se incorporan en el documento:</p>
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">El fundamento que lo habilita a tratar los datos personales conforme a la normatividad que le resulte aplicable <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input radio-item" id="checkedc1" name="defaultExampleRadiosc1" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc1" (click)="setCheckboxesCuestionarioValue1('Si')">Si</label>
+                                                                                                </div>
+                                                                                                
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc2" name="defaultExampleRadiosc1" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc2" (click)="setCheckboxesCuestionarioValue1('No')">No</label>
+                                                                                                </div>
+                                                                                                <!--
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc3" name="defaultExampleRadiosc1" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc3" (click)="setCheckboxesCuestionarioValue1('No aplica')">No aplica</label>
+                                                                                                </div>-->
+                                                                                             </div>
+                                                                                             <div style="margin-top: 30px;" *ngIf='formPreconsulta.radioConsulta1 ==="Si"'>
+                                                                                                <p class="texto-bajo texto-bajo-primario">Enlace al hipervínculo web <span class="required">*</span></p>
+                                                                                                <input formControlName="hipervinculo" type="text" id="form7" class="md-textarea form-control" rows="1" mdbInput (keyup)="incHipervinculo();" maxlength="100">
+                                                                                                <!--<div style="text-align: right;"><span>{{chipervinculo}}/100</span></div> -->
+                                                                                             </div>
+
+                                                                                             <div style="margin-top: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Finalidades concretas, lícitas, explícitas y legítimas del tratamiento<span class="required">*</span></p>
+                                                                                             </div>
+                                                                                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario " >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input radio-item" id="checkedc21" name="defaultExampleRadiosc2" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc21" (click)="setCheckboxesCuestionarioValue2('Principales')">Principales</label>
+                                                                                                </div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc22" name="defaultExampleRadiosc2" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc22" (click)="setCheckboxesCuestionarioValue2('Secundarias')">Secundarias</label>
+                                                                                                </div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc23" name="defaultExampleRadiosc2" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc23" (click)="setCheckboxesCuestionarioValue2('Ambas')">Ambas</label>
+                                                                                                </div>
+                                                                                             </div>
+
+                                                                                             <div style="margin-top: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Tipo de datos personales</p>
+                                                                                                <p class="texto-bajo texto-bajo-primario" style="margin-left: 20px;">Datos personales objeto de tratamiento <span class="required" style="font-weight: bold;">*</span></p>
+                                                                                             </div>
+                                                                                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario " >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input radio-item" id="checkedc31" name="defaultExampleRadiosc31" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc31" (click)="setCheckboxesCuestionarioValue31('Por categoría')">Por categoría</label>
+                                                                                                </div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc32" name="defaultExampleRadiosc31" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc32" (click)="setCheckboxesCuestionarioValue31('Por dato')">Por dato</label>
+                                                                                                </div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc33" name="defaultExampleRadiosc31" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc33" (click)="setCheckboxesCuestionarioValue31('Ambas')">Ambas</label>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                             <div style="margin-top: 30px;">
+                                                                                                <p class="texto-bajo texto-bajo-primario" style="margin-left: 20px;">Datos personales sensibles <span class="required" style="font-weight: bold;">*</span></p>
+                                                                                             </div>
+                                                                                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario " >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input radio-item" id="checkedc34" name="defaultExampleRadiosc32" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc34" (click)="setCheckboxesCuestionarioValue32('Si')">Si</label>
+                                                                                                </div>
+                                                                                                <!--
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc35" name="defaultExampleRadiosc32" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc35" (click)="setCheckboxesCuestionarioValue32('No')">No</label>
+                                                                                                </div>
+                                                                                              -->
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc36" name="defaultExampleRadiosc32" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc36" (click)="setCheckboxesCuestionarioValue32('No aplica')">No aplica</label>
+                                                                                                </div>
+                                                                                              
+                                                                                             </div>
+
+                                                                                             <div style="margin-top: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" >Categorías de titulares <span class="required">*</span></p>
+                                                                                             </div>
+                                                                                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input radio-item" id="checkedc41" name="defaultExampleRadiosc4" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc41" (click)="setCheckboxesCuestionarioValue4('Si')">Si</label>
+                                                                                                </div>
+                                                                                                
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc42" name="defaultExampleRadiosc4" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc42" (click)="setCheckboxesCuestionarioValue4('No')">No</label>
+                                                                                                </div>
+                                                                                                <!--
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc43" name="defaultExampleRadiosc4" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc43" (click)="setCheckboxesCuestionarioValue4('No aplica')">No aplica</label>
+                                                                                                </div>
+                                                                                              -->
+                                                                                             </div>
+
+                                                                                             <div style="margin-top: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" >Transferencias de datos personales <span class="required">*</span></p>
+                                                                                             </div>
+                                                                                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input radio-item" id="checkedc51" name="defaultExampleRadiosc51" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc51" (click)="setCheckboxesCuestionarioValue51('Si')">Si</label>
+                                                                                                </div>
+                                                                                                <!--
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc52" name="defaultExampleRadiosc51" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc52" (click)="setCheckboxesCuestionarioValue51('No')">No</label>
+                                                                                                </div>
+                                                                                              -->
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc53" name="defaultExampleRadiosc51" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc53" (click)="setCheckboxesCuestionarioValue51('No aplica')">No aplica</label>
+                                                                                                </div>                                                                                              
+                                                                                             </div>
+                                                                                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario " style="margin-top: 30px;" *ngIf='formPreconsulta.radioConsulta51==="Si"'>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input radio-item" id="checkedc54" name="defaultExampleRadiosc52" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc54" (click)="setCheckboxesCuestionarioValue52('Nacionales')">Nacionales</label>
+                                                                                                </div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc55" name="defaultExampleRadiosc52" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc55" (click)="setCheckboxesCuestionarioValue52('Internacionales')">Internacionales</label>
+                                                                                                </div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc56" name="defaultExampleRadiosc52" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc56" (click)="setCheckboxesCuestionarioValue52('Ambas')">Ambas</label>
+                                                                                                </div>
+                                                                                                <div style="height: 20px;"></div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                    <input type="radio" class="custom-control-input radio-item" id="checkedc57" name="defaultExampleRadiosc53" mdbInput>
+                                                                                                    <label class="custom-control-label" for="checkedc57" (click)="setCheckboxesCuestionarioValue53('Sector público')">Sector público</label>
+                                                                                                  </div>
+                                                                                                  <div class="custom-control custom-radio">
+                                                                                                    <input type="radio" class="custom-control-input" id="checkedc58" name="defaultExampleRadiosc53" mdbInput>
+                                                                                                    <label class="custom-control-label" for="checkedc58" (click)="setCheckboxesCuestionarioValue53('Sector privado')">Sector privado</label>
+                                                                                                  </div>
+                                                                                                  <div class="custom-control custom-radio">
+                                                                                                    <input type="radio" class="custom-control-input" id="checkedc59" name="defaultExampleRadiosc53" mdbInput>
+                                                                                                    <label class="custom-control-label" for="checkedc59" (click)="setCheckboxesCuestionarioValue53('Ambos')">Ambos</label>
+                                                                                                  </div>
+                                                                                             </div>
+
+                                                                                             <div style="margin-top: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" >Tecnología utilizada <span class="required">*</span></p>
+                                                                                             </div>
+                                                                                             <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input radio-item" id="checkedc61" name="defaultExampleRadiosc6" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc61" (click)="setCheckboxesCuestionarioValue6('Si')">Si</label>
+                                                                                                </div>
+                                                                                                
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc62" name="defaultExampleRadiosc6" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc62" (click)="setCheckboxesCuestionarioValue6('No')">No</label>
+                                                                                                </div>
+                                                                                                <!--
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input type="radio" class="custom-control-input" id="checkedc63" name="defaultExampleRadiosc6" mdbInput>
+                                                                                                  <label class="custom-control-label" for="checkedc63" (click)="setCheckboxesCuestionarioValue6('No aplica')">No aplica</label>
+                                                                                                </div>
+                                                                                              -->
+                                                                                             </div>
+
+                                                                                             <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                <div style="height: 10px;">
+                                                                                                    <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" style="margin-top: 0px; padding-top: 0px;">Describa la información adicional incorporada en el documento que resulta relevante para el caso concreto: <span class="required">*</span></p>
+                                                                                                </div>
+                                                                                                <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                    <textarea formControlName="relevante" type="text" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="3" mdbInput (keyup)="incRelevante();" maxlength="3000"></textarea>
+                                                                                                 </div>
+                                                                                                </div>
+                                                                                                <div style="text-align: right;">{{form.value.relevante.length}}/3000</div>
+                                                                                                <!--<div style="text-align: right; padding-top: px; margin-top: 0px;"><span>{{crelevante}}/500</span></div>-->
+
+                                                                                          </mdb-accordion-item-body>
+                                                                                        </div>
+                                                                                        
+                                                                                       
+
+                                                                                    </mdb-accordion-item>
+
+                                                                                    <mdb-accordion-item  [collapsed]="true"  >
+                                                                                        
+                                                                                        <mdb-accordion-item-head >
+                                                                                            <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                                <span class="texto-bajo" style="font-size: 20px; color:white">2</span>
+                                                                                              </button>&nbsp;&nbsp;
+                                                                                              <span style="color: #AE105A;">
+                                                                                                Datos de la persona designada para proporcionar mayor información y/o documentación al respecto
+                                                                                              </span>
+                                                                                           
+                                                                                        </mdb-accordion-item-head>
+
+                                                                                        <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                            <mdb-accordion-item-body>
+                                                                                                <div class="" style="height: 30px;" ></div>
+                                                                                                <div class="md-form input-group mb-3">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">a.	Nombre completo <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group mb-3 ">
+                                                                                                        <input formControlName="nombre" type="text" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" maxlength="100"  mdbInput>
+                                                                                                     </div>
+                                                                                                </div>
+                                                                                                
+                                                                                                <div class="md-form input-group mb-3">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">b.	Cargo <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group mb-3 ">
+                                                                                                        <input formControlName="cargo" type="text" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" maxlength="100" mdbInput>
+                                                                                                     </div>
+                                                                                                </div>
+                                                                                              
+                                                                                                <div class="md-form input-group mb-3">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">c.	Unidad administrativa de adscripción <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group mb-3 ">
+                                                                                                        <input formControlName="unidad" type="text" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" maxlength="100" mdbInput>
+                                                                                                     </div>
+                                                                                                </div>
+                                                                                               
+                                                                                                <div class="md-form input-group mb-3">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">d.	Correo electrónico institucional<span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group mb-3 ">
+                                                                                                        <input formControlName="correo" type="email" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" maxlength="100"  mdbInput>
+                                                                                                     </div>
+                                                                                                </div>
+                                                                                               
+                                                                                                <div class="md-form input-group mb-3">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">e.	Teléfono institucional <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group mb-3 ">
+                                                                                                        <input formControlName="telefono" type="number" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" pattern="\d*" maxlength="10" 
+                                                                                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  mdbInput>
+                                                                                                     </div>
+                                                                                                </div>
+                                                                                            </mdb-accordion-item-body>
+                                                                                        </div>
+
+                                                                                        
+                                                                                      
+
+                                                                                    </mdb-accordion-item>
+
+                                                                                    <mdb-accordion-item  [collapsed]="true"  >
+                                                                                        
+                                                                                        <mdb-accordion-item-head >
+                                                                                            <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                                <span class="texto-bajo" style="font-size: 20px; color:white">3</span>
+                                                                                              </button>&nbsp;&nbsp;
+                                                                                              <span style="color: #AE105A;">
+                                                                                                Cualquier otra información o documentos que sirva de utilidad hacer del conocimiento del Instituto
+                                                                                              </span>
+                                                                                           
+                                                                                        </mdb-accordion-item-head>
+
+                                                                                        <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                            <mdb-accordion-item-body>
+                                                                                                <div class="" style="height: 30px;" ></div>
+                                                                                               
+                                                                                                <div class="md-form input-group mb-3">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group mb-3 ">
+                                                                                                        <input type="file"  mdbBtn class="form-control m-0 px-3 py-2" style="background-color: white;" aria-describedby="button-addon2" id="documentos" (change)="onFileChange3($event)" #fileInput accept=".zip, .pdf">
+                                                                                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="padding: 0px; margin: 0px;">
+                                                                                                          <div class="row" style="padding: 0px; margin: 0px;"> 
+                                                                                                            <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo-primario" style="padding: 0px; margin: 0px; font-size: 12px; text-align: right;">
+                                                                                                              <span>Todo documento electrónico que sea compartido deberá de adjuntarse en formato PDF o en ZIP y su tamaño, no deberá exceder de 10 MB</span>
+                                                                                                            </div>
+                                                                                                          </div>
+                                                                                                       </div>
+                                                                                                     </div>
+                                                                                                </div>
+                                                                                                <div>
+                                                                                                    <p class="texto-bajo texto-bajo-primario" style="font-size: 18px; font-weight: bold">Proporcione la siguiente información:</p>
+                                                                                                </div>
+                                                                                                <div class="md-form input-group" style="margin-bottom: 0px;">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Descripción general de la información adicional: <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group " style="margin-bottom: 0px;">
+                                                                                                        <textarea formControlName="desGenAdi" type="text" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" maxlength="3000" rows="5" mdbInput></textarea>
+                                                                                                    </div>                                                                                                      
+                                                                                                </div>
+                                                                                                <div style="text-align: right;">{{form.value.desGenAdi.length}}/3000</div>
+                                                                                                    
+                                                                                                <div class="md-form input-group " style="margin-bottom: 0px;">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Descripción general de los documentos anexos: <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group " style="margin-bottom: 0px;">
+                                                                                                        <textarea formControlName="desGenAne" type="text" id="form7" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" maxlength="3000" rows="5" mdbInput></textarea>
+                                                                                                    </div>
+                                                                                                  </div>
+                                                                                                <div style="text-align: right;">{{form.value.desGenAne.length}}/3000</div>
+                                                                                            </mdb-accordion-item-body>
+    
+                                                                                        </div>
+                                                                                                                                                                              
+
+                                                                                    </mdb-accordion-item>
+                                                                                  </mdb-accordion>
+                                                                                 
+                                                                            </div>
+                                                                        
+                                                                        </div>
+                                                                       
+                                                                       
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="" style="height: 50px;" ></div>
+                                                          <div class="col-12 col-md-12 col-lg-12 col-xl-12 " >
+                                                            <div class="row" style="text-align: justify">
+        
+                                                            <div class="col-12 col-md-12 col-lg-10 col-xl-10 " >
+                                                                        
+                                                            </div>
+                                                            <div class="col-12 col-md-12 col-lg-2 col-xl-2 " style=" padding: 10px;">
+                                                                <!--<button mdbBtn type="submit"  class="btn-block texto-medio boton-primario" [disabled]="form.invalid" outline="true" >Guardar</button>-->
+                                                                <button mdbBtn type="submit"  class="btn-block texto-medio boton-primario"  outline="true" >Guardar</button>
+                                                            </div>
+                                                            
+                                                            </div>
+                                                           </div>
+                                                          <div class="" style="height: 50px;" ></div>
+                                                        </mdb-tab>
+                                                        
+                                                      </mdb-tabset>
+                                                     
+                                                </div>
+                                                
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="" style="height: 30px;" ></div>
+                            </div>
+                         
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<div style="height: 150px;"></div>
+
+<app-footer></app-footer>
+
+
+<div mdbModal #frameOk="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameOk.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book; font-size: 20px;">
+        Se ha iniciado un proceso de Consultas respecto a la obligación de elaborar y presentar una Evaluación de impacto en la protección de datos personales, con número de folio: {{responseUsuario.mensaje}}
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameOk.hide(); navegaBandeja(); " mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div mdbModal #frameFail="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameFail.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book; font-size: 20px;">
+        El cuestionario no se pudo registrar
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameFail.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Guardando </p></ngx-spinner>

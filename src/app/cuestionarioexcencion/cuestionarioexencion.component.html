@@ -1,0 +1,667 @@
+<app-header></app-header>
+<form [formGroup]="form">
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+
+                            <div class="  z-depth-4">
+                                <div style="height: 30px;"></div>
+
+                                <div class="row">
+                                  <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="text-align: right; ">
+                                    <div class="row" *ngIf="botones==false">
+                                        <div class="col-12 col-md-12 col-lg-6 col-xl-6"   ></div>                                    
+                                        <div class="col-12 col-md-12 col-lg-6 col-xl-6" style=" padding-right: 35px;" >
+                                          <button type="button" mdbBtn  class=" texto-medio boton-primario" mdbWavesEffect (click)="descargarCuestionario();">&nbsp;Imprimir&nbsp;</button>
+                                          <button type="button" mdbBtn  class=" texto-medio boton-primario" mdbWavesEffect (click)="riaCuestionario();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RIA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                          <button type="button" mdbBtn  class=" texto-medio boton-primario" mdbWavesEffect (click)="aceptarCuestionario();">&nbsp;Aceptar</button>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="botones==true">                                        
+                                        <div class="col-12 col-md-12 col-lg-4 col-xl-4"  ></div>
+                                        <div class="col-12 col-md-12 col-lg-8 col-xl-8" style="padding-right: 35px ;" >
+                                          <button type="button" mdbBtn  class=" texto-medio boton-primario" mdbWavesEffect (click)="navegaHistorico();">Ver Expediente</button>
+                                          <button type="button" mdbBtn  class=" texto-medio boton-primario" mdbWavesEffect (click)="descargarCuestionario();">&nbsp;Imprimir&nbsp;</button>
+                                          <button type="button" mdbBtn  class=" texto-medio boton-primario" mdbWavesEffect (click)="regresar();">&nbsp;Regresar</button>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                            <div class="row " style="text-align: justify">
+                                                
+
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 pl-0 pr-0 texto-font-color" >
+                                                    <mdb-tabset #staticTabs [buttonClass]="'nav md-pills custom-class mb-2'" [justified]="true" [contentClass]="'card'">
+
+                                                        <mdb-tab heading="Cuestionario">
+                                                          <div class="row" style="text-align: justify; padding: 0px; margin: 0px;">
+                                                            <div class="col-12" style="text-align: justify; padding: 0px; margin: 0px;">
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 " style="text-align: justify; padding: 0px; margin: 0px;">
+
+
+                                                                        <div class=" overflow-auto" style="text-align: justify; padding: 0px; margin: 0px;" >
+
+                                                                            <div style=" width: 1068px;" >
+                                                                                <div class="" style="height: 50px;" ></div>
+                                                                                <mdb-accordion [multiple]="false" aria-multiselectable="true" >
+                                                                                    <mdb-accordion-item  [collapsed]="false"  >
+                                                                                        <mdb-accordion-item-head >
+                                                                                            <button mat-mini-fab style="background-color:#AE105A;" aria-label="">
+                                                                                              <span class="texto-bajo" style="font-size: 20px; color:white">1</span>
+                                                                                            </button>&nbsp;&nbsp;
+                                                                                            <span style="color: #AE105A;">
+                                                                                              La denominación y los objetivos generales y específicos que persigue la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que implique un tratamiento intensivo o relevante de datos personales.
+
+                                                                                            </span>
+
+                                                                                      </mdb-accordion-item-head>
+                                                                                        <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                          <mdb-accordion-item-body>
+
+                                                                                             <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                <div style="height: 10px;">
+                                                                                                    <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" style="margin-top: 0px; padding-top: 0px;">a) Su denominaci&oacute;n: <span class="required">*</span></p>
+                                                                                                </div>
+                                                                                                <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                    <textarea readonly formControlName="denominacion" type="text" id="denominacion" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="5" mdbInput  maxlength="3000"></textarea>
+                                                                                                </div>
+                                                                                             </div>
+
+                                                                                            <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                              <div style="height: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" style="margin-top: 0px; padding-top: 0px;">b) El nombre de la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que implique un tratamiento intensivo o relevante de datos personales: <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                <textarea readonly formControlName="politica" type="text" id="politica" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="5" mdbInput  maxlength="3000"></textarea>
+                                                                                              </div>
+                                                                                            </div>
+
+                                                                                            <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                              <div style="height: 60px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" style="margin-top: 0px; padding-top: 0px;">c) Los objetivos generales y específicos que persigue la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que implique un tratamiento intensivo o relevante de datos personales: <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <br />
+                                                                                              <div style="height: 20px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Objetivos Generales <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                <textarea readonly formControlName="objetivosGenerales" type="text" id="objetivosGenerales" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                                              </div>
+                                                                                              <div style="height: 20px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Objetivos Especificos <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                <textarea readonly formControlName="objetivosEspecificos" type="text" id="objetivosEspecificos" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                                              </div>
+                                                                                            </div>
+
+                                                                                            <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                              <div style="height: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" style="margin-top: 0px; padding-top: 0px;">d) Supuestos de tratamiento relevante o intensivo en lo general y/o en lo particular en los que encuadra la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología: <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                <textarea readonly formControlName="relevante" type="text" id="relevante" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                                              </div>
+                                                                                            </div>
+
+                                                                                            <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                              <div style="height: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" style="margin-top: 0px; padding-top: 0px;">e) Razones por las cuales se considera que la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología implica un tratamiento intensivo o relevante de datos personales a consideración del sujeto obligado: <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                                <textarea readonly formControlName="razones" type="text" id="razones" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                                              </div>
+                                                                                            </div>
+
+                                                                                            <div class="md-form input-group mb-3">
+                                                                                              <div style="height: 10px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="md-form input-group mb-3 ">
+                                                                                                <p class="texto-bajo-primario">{{archivoRazones.filename}}</p>&nbsp;&nbsp;
+                                                                                                <fa-icon [icon]="faDownload"  mdbTooltip="{{archivoRazones.filename}}"  style="color: #AE105A ; font-size: 18px; cursor: pointer;" (click)="descargarArchivo(archivoRazones.filetype)" ></fa-icon>
+                                                                                              </div>
+                                                                                            </div>
+
+                                                                                          </mdb-accordion-item-body>
+                                                                                        </div>
+                                                                                    </mdb-accordion-item>
+
+                                                                                    <mdb-accordion-item  [collapsed]="true"  >
+
+                                                                                        <mdb-accordion-item-head >
+                                                                                            <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                                <span class="texto-bajo" style="font-size: 20px; color:white">2</span>
+                                                                                              </button>&nbsp;&nbsp;
+                                                                                              <span style="color: #AE105A;">
+                                                                                                Las finalidades del tratamiento intensivo o relevante de datos personales
+                                                                                              </span>
+
+                                                                                        </mdb-accordion-item-head>
+
+                                                                                        <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                            <mdb-accordion-item-body>
+                                                                                                <div class="" style="height: 30px;" ></div>
+                                                                                               <div class="md-form input-group mb-3">
+                                                                                                 <div style="height: 10px;">
+                                                                                                  <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                                 </div>
+                                                                                                 <div class="md-form input-group mb-3 ">
+                                                                                                   <p class="texto-bajo-primario">{{archivoFinalidades.filename}}</p>&nbsp;&nbsp;
+                                                                                                   <fa-icon [icon]="faDownload"  mdbTooltip="{{archivoFinalidades.filename}}"  style="color: #AE105A ; font-size: 18px; cursor: pointer;" (click)="descargarArchivo(archivoFinalidades.filetype)" ></fa-icon>
+                                                                                                 </div>
+                                                                                               </div>
+
+                                                                                              <div style="margin-top: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Finalidades del tratamiento <span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.finaldades == 'Principales' ? true : false" disabled type="radio" class="custom-control-input radio-item" id="finalidades1" name="finaldades" mdbInput>
+                                                                                                  <label class="custom-control-label" for="finalidades1">Principales</label>
+                                                                                                </div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.finaldades == 'Secundarias' ? true : false" disabled type="radio" class="custom-control-input" id="finalidades2" name="finaldades" mdbInput>
+                                                                                                  <label class="custom-control-label" for="finalidades2">Secundarias</label>
+                                                                                                </div>
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.finaldades == 'Ambas' ? true : false" disabled type="radio" class="custom-control-input" id="finalidades3" name="finaldades" mdbInput>
+                                                                                                  <label class="custom-control-label" for="finalidades3">Ambas</label>
+                                                                                                </div>
+                                                                                              </div>
+                                                                                            </mdb-accordion-item-body>
+                                                                                        </div>
+                                                                                    </mdb-accordion-item>
+
+                                                                                    <mdb-accordion-item  [collapsed]="true"  >
+                                                                                        <mdb-accordion-item-head >
+                                                                                            <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                                <span class="texto-bajo" style="font-size: 20px; color:white">3</span>
+                                                                                              </button>&nbsp;&nbsp;
+                                                                                              <span style="color: #AE105A;">
+                                                                                                Las razones o motivos que le permitieron determinar que la evaluación de impacto en la protección de datos personales compromete los efectos de la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que implique un tratamiento intensivo o relevante de datos personales que pretende implementar o modificar, o bien, la situación de emergencia o urgencia que hacen inviable la presentación de ésta
+                                                                                              </span>
+                                                                                        </mdb-accordion-item-head>
+
+                                                                                        <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                            <mdb-accordion-item-body>
+                                                                                                <div class="" style="height: 30px;" ></div>
+
+                                                                                                <div class="md-form input-group mb-3">
+                                                                                                    <div style="height: 10px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                    <div class="md-form input-group mb-3 ">
+                                                                                                      <p class="texto-bajo-primario">{{archivoMotivos.filename}}</p>&nbsp;&nbsp;
+                                                                                                      <fa-icon [icon]="faDownload"  mdbTooltip="{{archivoMotivos.filename}}"  style="color: #AE105A ; font-size: 18px; cursor: pointer;" (click)="descargarArchivo(archivoMotivos.filetype)" ></fa-icon>
+                                                                                                     </div>
+                                                                                                </div>
+
+                                                                                                <div>
+                                                                                                    <p class="texto-bajo texto-bajo-primario" style="font-size: 18px; font-weight: bold">Seleccione los requisitos que se incorporan en el documento:</p>
+                                                                                                </div>
+                                                                                                <div class="md-form input-group mb-3">
+                                                                                                    <div style="height: 50px;">
+                                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Las razones o motivos que le permitieron determinar que la evaluación de impacto en la protección de datos personales compromete los efectos del tratamiento intensivo o relevante de datos personales que pretende implementar o modificar: <span class="required">*</span></p>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                              <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.motivos == 'Si' ? true : false" disabled type="radio" class="custom-control-input radio-item" id="motivos1" name="motivos" mdbInput>
+                                                                                                  <label class="custom-control-label" for="motivos1">Si</label>
+                                                                                                </div>
+                                                                                                <!--
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.motivos == 'No' ? true : false" disabled type="radio" class="custom-control-input" id="motivos2" name="motivos" mdbInput>
+                                                                                                  <label class="custom-control-label" for="motivos2">No</label>
+                                                                                                </div>
+                                                                                              -->
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.motivos == 'No aplica' ? true : false" disabled type="radio" class="custom-control-input" id="motivos3" name="motivos" mdbInput>
+                                                                                                  <label class="custom-control-label" for="motivos3">No aplica</label>
+                                                                                                </div>
+                                                                                              </div>
+
+                                                                                              <div style="margin-top: 30px;">
+                                                                                                <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario" >La situación de emergencia o urgencia que hacen inviable la presentación de evaluación de impacto en la protección de datos personales<span class="required">*</span></p>
+                                                                                              </div>
+                                                                                              <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.emergencia == 'Si' ? true : false" disabled type="radio" class="custom-control-input radio-item" id="emergencia1" name="emergencia" mdbInput>
+                                                                                                  <label class="custom-control-label" for="emergencia1">Si</label>
+                                                                                                </div>
+                                                                                                <!--
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.emergencia == 'No' ? true : false" disabled type="radio" class="custom-control-input" id="emergencia2" name="emergencia" mdbInput>
+                                                                                                  <label class="custom-control-label" for="emergencia2">No</label>
+                                                                                                </div>
+                                                                                              -->
+                                                                                                <div class="custom-control custom-radio">
+                                                                                                  <input [checked]="form.value.emergencia == 'No aplica' ? true : false" disabled type="radio" class="custom-control-input" id="emergencia3" name="emergencia" mdbInput>
+                                                                                                  <label class="custom-control-label" for="emergencia3">No aplica</label>
+                                                                                                </div>
+                                                                                              </div>
+                                                                                            </mdb-accordion-item-body>
+                                                                                        </div>
+                                                                                    </mdb-accordion-item>
+
+                                                                                    <mdb-accordion-item  [collapsed]="true"  >
+                                                                                     <mdb-accordion-item-head >
+                                                                                      <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                        <span class="texto-bajo" style="font-size: 20px; color:white">4</span>
+                                                                                      </button>&nbsp;&nbsp;
+                                                                                      <span style="color: #AE105A;">
+                                                                                        Las consecuencias negativas que se derivarían de la elaboración y presentación de la evaluación de impacto en la protección de datos personales
+                                                                                      </span>
+                                                                                     </mdb-accordion-item-head>
+                                                                                      <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                        <mdb-accordion-item-body>
+                                                                                          <div class="" style="height: 30px;" ></div>
+                                                                                          <div class="md-form input-group mb-3">
+                                                                                            <div style="height: 10px;">
+                                                                                              <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                            </div>
+                                                                                            <div class="md-form input-group mb-3 ">
+                                                                                              <p class="texto-bajo-primario">{{archivoConsecuencias.filename}}</p>&nbsp;&nbsp;
+                                                                                              <fa-icon [icon]="faDownload"  mdbTooltip="{{archivoConsecuencias.filename}}"  style="color: #AE105A ; font-size: 18px; cursor: pointer;" (click)="descargarArchivo(archivoConsecuencias.filetype)" ></fa-icon>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </mdb-accordion-item-body>
+                                                                                      </div>
+                                                                                    </mdb-accordion-item>
+
+                                                                              <mdb-accordion-item  [collapsed]="true"  >
+                                                                                <mdb-accordion-item-head >
+                                                                                  <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                    <span class="texto-bajo" style="font-size: 20px; color:white">5</span>
+                                                                                  </button>&nbsp;&nbsp;
+                                                                                  <span style="color: #AE105A;">
+                                                                                      El fundamento legal que habilitó el tratamiento de datos personales en el marco de la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que se pretende poner en operación o modificar
+                                                                                  </span>
+                                                                                </mdb-accordion-item-head>
+                                                                                <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                  <mdb-accordion-item-body>
+                                                                                    <div class="" style="height: 30px;" ></div>
+                                                                                    <div class="md-form input-group mb-3">
+                                                                                      <div style="height: 10px;">
+                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                      </div>
+                                                                                      <div class="md-form input-group mb-3 ">
+                                                                                        <p class="texto-bajo-primario">{{archivoFundamentos.filename}}</p>&nbsp;&nbsp;
+                                                                                        <fa-icon [icon]="faDownload"  mdbTooltip="{{archivoFundamentos.filename}}"  style="color: #AE105A ; font-size: 18px; cursor: pointer;" (click)="descargarArchivo(archivoFundamentos.filetype)" ></fa-icon>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                      <p class="texto-bajo texto-bajo-primario" style="font-size: 18px; font-weight: bold">Seleccione los requisitos que se incorporan en el documento:</p>
+                                                                                    </div>
+                                                                                    <div class="md-form input-group mb-3">
+                                                                                      <div style="height: 10px;">
+                                                                                        <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Fundamento legal: <span class="required">*</span></p>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                      <div class="custom-control custom-radio">
+                                                                                        <input [checked]="form.value.fundamento == 'Si' ? true : false" disabled type="radio" class="custom-control-input radio-item" id="fundamento1" name="fundamento" mdbInput>
+                                                                                        <label class="custom-control-label" for="fundamento1">Si</label>
+                                                                                      </div>
+                                                                                      <div class="custom-control custom-radio">
+                                                                                        <input [checked]="form.value.fundamento == 'No' ? true : false" disabled type="radio" class="custom-control-input" id="fundamento2" name="fundamento" mdbInput>
+                                                                                        <label class="custom-control-label" for="fundamento2">No</label>
+                                                                                      </div>
+                                                                                      <!--
+                                                                                      <div class="custom-control custom-radio">
+                                                                                        <input [checked]="form.value.fundamento == 'No Aplica' ? true : false" disabled type="radio" class="custom-control-input" id="fundamento3" name="fundamento" mdbInput>
+                                                                                        <label class="custom-control-label" for="fundamento3">No Aplica</label>
+                                                                                      </div>
+                                                                                    -->
+                                                                                    </div>
+                                                                                    <div style="margin-top: 30px;" *ngIf='form.value.fundamento  ==="Si"'>
+                                                                                      <p class="texto-bajo texto-bajo-primario">Enlace al hipervínculo web <span class="required">*</span></p>
+                                                                                      <input disabled formControlName="enlaceWeb" type="text" id="enlace" class="md-textarea form-control" rows="1" mdbInput maxlength="100">
+                                                                                    </div>
+                                                                                  </mdb-accordion-item-body>
+                                                                                </div>
+                                                                              </mdb-accordion-item>
+
+                                                                                  <mdb-accordion-item  [collapsed]="true"  >
+                                                                                    <mdb-accordion-item-head >
+                                                                                      <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                        <span class="texto-bajo" style="font-size: 20px; color:white">6</span>
+                                                                                      </button>&nbsp;&nbsp;
+                                                                                      <span style="color: #AE105A;">
+                                                                                      La fecha en que se puso en operación o modificó la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que implique un tratamiento intensivo o relevante de datos personales, así como su periodo de duración
+                                                                                      </span>
+                                                                                    </mdb-accordion-item-head>
+                                                                                    <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                      <mdb-accordion-item-body>
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <input disabled formControlName="fechaPolitica" type="date" width="350px">
+                                                                                        </div>
+                                                                                      </mdb-accordion-item-body>
+                                                                                    </div>
+                                                                                  </mdb-accordion-item>
+
+
+                                                                                  <mdb-accordion-item  [collapsed]="true"  >
+                                                                                    <mdb-accordion-item-head >
+                                                                                      <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                        <span class="texto-bajo" style="font-size: 20px; color:white">7</span>
+                                                                                      </button>&nbsp;&nbsp;
+                                                                                      <span style="color: #AE105A;">
+                                                                                        La opinión técnica del oficial de protección de datos personales respecto del tratamiento intensivo o relevante de datos personales que implique la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología, en su caso
+                                                                                      </span>
+                                                                                    </mdb-accordion-item-head>
+                                                                                    <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                      <mdb-accordion-item-body>
+                                                                                        <div class="" style="height: 30px;" ></div>
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <div style="height: 10px;">
+                                                                                            <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                          </div>
+                                                                                          <div class="md-form input-group mb-3 ">
+                                                                                            <p class="texto-bajo-primario">{{archivoOpinion.filename}}</p>&nbsp;&nbsp;
+                                                                                            <fa-icon [icon]="faDownload"  mdbTooltip="{{archivoOpinion.filename}}"  style="color: #AE105A ; font-size: 18px; cursor: pointer;" (click)="descargarArchivo(archivoOpinion.filetype)" ></fa-icon>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                          <p class="texto-bajo texto-bajo-primario" style="font-size: 18px; font-weight: bold">Proporcione la siguiente información:</p>
+                                                                                        </div>
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <div style="height: 10px;">
+                                                                                            <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">¿Quién realiza la opinión? <span class="required">*</span></p>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                          <div class="custom-control custom-radio">
+                                                                                            <input [checked]="form.value.opinionTecnica == 'Unidad de Transparencia' ? true : false" disabled type="radio" class="custom-control-input radio-item" id="opinionTecnica1" name="opinionTecnica" mdbInput>
+                                                                                            <label class="custom-control-label" for="opinionTecnica1">Unidad de Transparencia</label>
+                                                                                          </div>
+                                                                                          <div class="custom-control custom-radio">
+                                                                                            <input [checked]="form.value.opinionTecnica == 'Oficial de Protección de Datos' ? true : false" disabled type="radio" class="custom-control-input" id="opinionTecnica2" name="opinionTecnica" mdbInput>
+                                                                                            <label class="custom-control-label" for="opinionTecnica2">Oficial de Protección de Datos</label>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </mdb-accordion-item-body>
+                                                                                    </div>
+                                                                                  </mdb-accordion-item>
+
+
+                                                                                  <mdb-accordion-item  [collapsed]="true"  >
+                                                                                    <mdb-accordion-item-head >
+                                                                                      <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                        <span class="texto-bajo" style="font-size: 20px; color:white">8</span>
+                                                                                      </button>&nbsp;&nbsp;
+                                                                                      <span style="color: #AE105A;">
+                                                                                        Los mecanismos o procedimientos adoptados por el responsable para que la política pública, programa, sistema o plataforma informática, aplicación electrónica o cualquier otra tecnología que implique un tratamiento intensivo o relevante de datos personales cumpla, desde el diseño y por defecto, con todas las obligaciones previstas en la Ley General o las legislaciones estatales en la materia y demás disposiciones aplicables
+                                                                                      </span>
+                                                                                    </mdb-accordion-item-head>
+                                                                                    <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                      <mdb-accordion-item-body>
+                                                                                        <div class="" style="height: 30px;" ></div>
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <div style="height: 10px;">
+                                                                                            <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                          </div>
+                                                                                          <div class="md-form input-group mb-3 ">
+                                                                                            <p class="texto-bajo-primario">{{archivoMecanismos.filename}}</p>&nbsp;&nbsp;
+                                                                                            <fa-icon [icon]="faDownload"  mdbTooltip="{{archivoMecanismos.filename}}"  style="color: #AE105A ; font-size: 18px; cursor: pointer;" (click)="descargarArchivo(archivoMecanismos.filetype)" ></fa-icon>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                          <p class="texto-bajo texto-bajo-primario" style="font-size: 18px; font-weight: bold">Seleccione los requisitos que se incorporan en el documento:</p>
+                                                                                        </div>
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <div style="height: 60px;">
+                                                                                            <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Los mecanismos o procedimientos adoptados por el responsable para que el tratamiento intensivo o relevante de datos personales cumpla, desde el diseño con todas las obligaciones previstas en la Ley General o las legislaciones estatales en la materia y demás disposiciones aplicables <span class="required">*</span></p>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                          <div class="custom-control custom-radio">
+                                                                                            <input disabled [checked]="form.value.mecanismosDiseno == 'Si' ? true : false" type="radio" class="custom-control-input radio-item" id="mecanismosDiseño1" name="mecanismosDiseno" mdbInput>
+                                                                                            <label class="custom-control-label" for="mecanismosDiseño1">Si</label>
+                                                                                          </div>
+                                                                                          <div class="custom-control custom-radio">
+                                                                                            <input disabled [checked]="form.value.mecanismosDiseno == 'No' ? true : false" type="radio" class="custom-control-input" id="mecanismosDiseño2" name="mecanismosDiseno" mdbInput>
+                                                                                            <label class="custom-control-label" for="mecanismosDiseño2">No</label>
+                                                                                          </div>
+                                                                                          <!--
+                                                                                          <div class="custom-control custom-radio">
+                                                                                            <input disabled [checked]="form.value.mecanismosDiseno == 'No aplica' ? true : false" type="radio" class="custom-control-input" id="mecanismosDiseño3" name="mecanismosDiseno" mdbInput>
+                                                                                            <label class="custom-control-label" for="mecanismosDiseño3">No aplica</label>
+                                                                                          </div>
+                                                                                        -->
+                                                                                        </div>
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <div style="height: 60px;">
+                                                                                            <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Los mecanismos o procedimientos adoptados por el responsable para que el tratamiento intensivo o relevante de datos personales cumpla, por defecto con todas las obligaciones previstas en la Ley General o las legislaciones estatales en la materia y demás disposiciones aplicables <span class="required">*</span></p>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12 texto-bajo texto-bajo-primario" >
+                                                                                          <div class="custom-control custom-radio">
+                                                                                            <input disabled [checked]="form.value.mecanismosDefecto == 'Si' ? true : false" type="radio" class="custom-control-input radio-item" id="mecanismosDefecto1" name="mecanismosDefecto" mdbInput>
+                                                                                            <label class="custom-control-label" for="mecanismosDefecto1">Si</label>
+                                                                                          </div>
+                                                                                          <div class="custom-control custom-radio">
+                                                                                            <input disabled [checked]="form.value.mecanismosDefecto == 'No' ? true : false" type="radio" class="custom-control-input" id="mecanismosDefecto2" name="mecanismosDefecto" mdbInput>
+                                                                                            <label class="custom-control-label" for="mecanismosDefecto2">No</label>
+                                                                                          </div>
+                                                                                          <!--
+                                                                                          <div class="custom-control custom-radio">
+                                                                                            <input disabled [checked]="form.value.mecanismosDefecto == 'No aplica' ? true : false" type="radio" class="custom-control-input" id="mecanismosDefecto3" name="mecanismosDefecto" mdbInput>
+                                                                                            <label class="custom-control-label" for="mecanismosDefecto3">No aplica</label>
+                                                                                          </div>
+                                                                                        -->
+                                                                                        </div>
+                                                                                      </mdb-accordion-item-body>
+                                                                                    </div>
+                                                                                  </mdb-accordion-item>
+
+                                                                                  <mdb-accordion-item  [collapsed]="true"  >
+                                                                                    <mdb-accordion-item-head >
+                                                                                      <button mat-mini-fab style="background-color:#AE105A" aria-label="">
+                                                                                        <span class="texto-bajo" style="font-size: 20px; color:white">9</span>
+                                                                                      </button>&nbsp;&nbsp;
+                                                                                      <span style="color: #AE105A;">
+                                                                                        Cualquier otra información o documentos que sirva de utilidad hacer del conocimiento del Instituto
+                                                                                      </span>
+                                                                                    </mdb-accordion-item-head>
+                                                                                    <div style="padding-left: 50px;padding-right: 20px; background-color: rgba(128, 128, 128, 0.171) !important;">
+                                                                                      <mdb-accordion-item-body>
+                                                                                        <div class="" style="height: 30px;" ></div>
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <div style="height: 10px;">
+                                                                                            <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Cargue el archivo correspondiente: <span class="required">*</span></p>
+                                                                                          </div>
+                                                                                          <div class="md-form input-group mb-3 ">
+                                                                                            <p class="texto-bajo-primario">{{archivoInformacion.filename}}</p>&nbsp;&nbsp;
+                                                                                            <fa-icon [icon]="faDownload"  mdbTooltip="{{archivoInformacion.filename}}"  style="color: #AE105A ; font-size: 18px; cursor: pointer;" (click)="descargarArchivo(archivoInformacion.filetype)" ></fa-icon>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                          <p class="texto-bajo texto-bajo-primario" style="font-size: 18px; font-weight: bold">Proporcione la siguiente información:</p>
+                                                                                        </div>
+
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <div style="height: 30px;">
+                                                                                            <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Descripción general de la información adicional <span class="required">*</span></p>
+                                                                                          </div>
+                                                                                          <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                            <textarea readonly formControlName="informacionAdicional" type="text" id="informacionAdicional" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                                          </div>
+                                                                                        </div>
+
+                                                                                        <div class="md-form input-group mb-3">
+                                                                                          <div style="height: 30px;">
+                                                                                            <p style="font-weight: bold;" class="texto-bajo texto-bajo-primario">Descripción general de los documentos anexos <span class="required">*</span></p>
+                                                                                          </div>
+                                                                                          <div class="md-form input-group " style="margin-bottom: 0px; padding-bottom: 0px;">
+                                                                                            <textarea readonly formControlName="documentosAnexos" type="text" id="documentosAnexos" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" class="md-textarea form-control" rows="5" mdbInput maxlength="3000"></textarea>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </mdb-accordion-item-body>
+                                                                                    </div>
+                                                                                  </mdb-accordion-item>
+
+
+
+                                                                              </mdb-accordion>
+
+                                                                            </div>
+
+                                                                        </div>
+
+
+
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="" style="height: 50px;" ></div>
+                                                          <div class="col-12 col-md-12 col-lg-12 col-xl-12 " >
+                                                            <div class="row" style="text-align: justify">
+
+                                                            <div class="col-12 col-md-12 col-lg-10 col-xl-10 " >
+
+                                                            </div>
+                                                            <div class="col-12 col-md-12 col-lg-2 col-xl-2 " style=" padding: 10px;">
+
+                                                            </div>
+
+                                                            </div>
+                                                           </div>
+                                                          <div class="" style="height: 50px;" ></div>
+                                                        </mdb-tab>
+
+                                                      </mdb-tabset>
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="" style="height: 30px;" ></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<div style="height: 150px;"></div>
+
+<app-footer></app-footer>
+<form [formGroup]="formAprobar" (ngSubmit)="aceptar();">
+  <div mdbModal #frameOk="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="modalAprobar"
+       tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+    <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content ">
+        <!--Header-->
+        <div class="modal-header  darken-3 white-text text-center">
+          <h4 class="title" style="font-family: Gotham-medium;">
+            Aceptar Cuestionario</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                  (click)="frameOk.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!--Body-->
+        <div class="modal-body mb-0 " style="font-family: Gotham-Book; font-size: 20px;">
+          <!--<span>Favor de adjuntar el documento de aceptación</span><span style="color: red;">*</span>
+          <div class="md-form input-group mb-3 ">
+            <input type="file"  mdbBtn class="form-control m-0 px-3 py-2" aria-describedby="button-addon2" id="aprobar" (change)="onFileChange($event,'aprobar')" #fileInput accept=".zip, .pdf">
+          </div>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row " style="padding: 0px; margin: 0px;">
+              
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="padding: 0px; margin: 0px; font-size: 10px; text-align: right;">
+                <p class="texto-bajo texto-bajo-primario">
+                  Todo documento electrónico que sea compartido deberá de adjuntarse en formato PDF o en ZIP y su tamaño, no deberá exceder de 10 MB
+                </p>
+              </div>
+            </div>
+          </div>
+        -->
+        </div>
+        <div class="text-center" style="font-family: Gotham-Book;">
+          <div class="row " >
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="frameOk.hide()"  outline="true"  mdbWavesEffect>Cancelar</button>
+              <!--<button mdbBtn type="submit"  class=" texto-medio boton-primario "  (click)="frameOk.hide()" outline="true" [disabled]="formAprobar.invalid"  mdbWavesEffect>Aceptar</button>-->
+              <button mdbBtn type="submit"  class=" texto-medio boton-primario "  (click)="frameOk.hide()" outline="true"  mdbWavesEffect>Aceptar</button>
+            </div>
+          </div>
+          <div style="height: 20px;"></div>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+</form>
+
+<form [formGroup]="formRIA" (ngSubmit)="ria();">
+  <div mdbModal #frameria="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+       tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+    <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content ">
+
+        <!--Header-->
+        <div class="modal-header  darken-3 white-text text-center">
+          <h4 class="title" style="font-family: Gotham-medium;">
+            Requerimiento de Información Adicional</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                  (click)="frameria.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!--Body-->
+        <div class="modal-body mb-0 " style="font-family: Gotham-Book; font-size: 20px;">
+          <span>Favor de adjuntar el documento de RIA</span><span style="color: red;">*</span>
+          <div class="md-form input-group mb-3 ">
+            <input type="file"  mdbBtn class="form-control m-0 px-3 py-2" aria-describedby="button-addon2" id="docria" (change)="onFileChange($event,'docria')" #fileInput accept=".zip, .pdf">
+          </div>
+          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row " style="padding: 0px; margin: 0px;">
+              
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="padding: 0px; margin: 0px; font-size: 10px; text-align: right;">
+                <p class="texto-bajo texto-bajo-primario">
+                  Todo documento electrónico que sea compartido deberá de adjuntarse en formato PDF o en ZIP y su tamaño, no deberá exceder de 10 MB
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center" style="font-family: Gotham-Book;">
+          <div class="row " >
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+
+              <button mdbBtn type="button"  class=" texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="frameria.hide()"  outline="true"  mdbWavesEffect>Cancelar</button>
+              <button mdbBtn type="submit"  class=" texto-medio boton-primario "  (click)="frameria.hide()" outline="true" [disabled]="formRIA.invalid"  mdbWavesEffect>Aceptar</button>
+            </div>
+          </div>
+          <div style="height: 20px;"></div>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+</form>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Cargando </p></ngx-spinner>

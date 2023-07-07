@@ -1,0 +1,26 @@
+.texto-titulo{
+    font-family: Gotham !important;
+    font-size: 20px !important;
+}
+
+
+
+.texto-primario-center{
+    color: #AE105A !important;
+    text-align: center;
+}
+
+input[type=text]:focus:not([readonly]) + label {
+    color: #AE105A; 
+}
+
+input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #AE105A;
+    box-shadow: 0 1px 0 0 #AE105A; 
+}
+
+.under{
+    color: #AE105A;
+    text-decoration: underline;
+    cursor: pointer;
+}

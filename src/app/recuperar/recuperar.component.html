@@ -1,0 +1,160 @@
+<mdb-navbar  SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" class="navCss" [containerInside]="false">
+    <mdb-navbar-brand>
+        <a class="navbar-brand white-text" style="font-family: Gotham">EIPDP</a>
+    </mdb-navbar-brand>   
+</mdb-navbar>
+<div style="background-color: #AE105A  ; border: 1px solid; height: 100px;   filter: blur(1px); -webkit-filter: blur(4px);"></div>
+
+
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                          <form #formLogin="ngForm" (ngSubmit)="recuperar()">
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Recuperar Usuario y Contraseña</p>
+                                <div style="height: 110px;"></div>
+                                <div class="row " style="padding: 40px;">
+                                    <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 texto-primario texto-bajo">
+
+                                     
+                                            <div class="form-group row">
+                                                <label for="inputemailInstitu" class="col-sm-5 col-md-5 col-lg-5 col-xl-3 col-form-label">Email Institucional <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7 col-md-7 col-lg-7 col-xl-9">
+                                                  <input mdbInput type="text" class="form-control" id="inputemailInstitu" maxlength="100" placeholder="" 
+                                                  name="emailInstitu" #emailInstitu="ngModel" [(ngModel)]="formUsuario.emailInstitucional" required>
+                                                </div>
+                                            </div>
+                                            
+                                    </div>
+                                </div>
+                                <div style="height: 110px;"></div>
+                                <div class="row " >
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-1 mb-md-1 margen" >
+                                        <div class="row ">
+
+                                          
+                                          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                                          </div>
+
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 " >
+                                            <button mdbBtn type="button"  class="btn-block texto-medio boton-primario" outline="true" (click)="cancelar();"mdbWavesEffect >Regresar</button>
+                                          </div>
+
+                                          <div class="separador"></div>
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 ">
+                                            <button mdbBtn type="submit"  class="btn-block texto-medio boton-primario" outline="true"  [disabled]="formLogin.invalid" mdbWavesEffect>Enviar</button>
+                                          </div>
+
+                                        </div>
+                                      </div>
+                                </div>
+                                <div style="height: 20px;"></div>
+                                <div class="alert alert-success" role="alert"  style="font-family: Gotham-bajo;">
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <hr>
+                                    <div>Si el usuario ingresado, se encuentra registrado en el sistema, se le enviara un correo con las instrucciones para recuperar sus credenciales de acceso.</div>
+                                 </div>
+                                
+                            </div>
+                          </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+
+
+
+<div class="footer " style="background-color: #AE105A ; border: 1px solid; height: 100px; filter: blur(8px); -webkit-filter: blur(8px);"></div>
+
+<div mdbModal #frameOk="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameOk.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>Se ha enviado un correo electrónico a la cuenta proporcionada con las instrucciones para recuperar sus credenciales de acceso
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameOk.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div mdbModal #frameFail="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameFail.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>El usuario no se encuentra registrado en el sistema
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameFail.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Enviando </p></ngx-spinner>

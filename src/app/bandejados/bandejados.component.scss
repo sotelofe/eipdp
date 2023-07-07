@@ -1,0 +1,80 @@
+.boton-primario{
+    color: #AE105A; 
+    border: 2px solid #AE105A;
+}
+
+.texto-medio{
+    font-family: Gotham-medium !important; 
+}
+
+
+.texto-titulo{
+    font-family: Gotham !important;
+    font-size: 20px !important;
+}
+
+
+
+.texto-primario-center{
+    color: #AE105A !important;
+    text-align: center;
+}
+
+@media only screen and (max-width: 992px) {  
+    .texto-primario{
+        color: #AE105A !important;
+        text-align: left;
+    }
+} 
+
+@media only screen and (min-width: 993px) {  
+    .texto-primario{
+        color: #AE105A !important;
+        text-align: right;
+    }
+} 
+
+@media only screen and (max-width: 992px) {  
+    .separador{
+        height: 50px;
+        display: block;
+    }
+} 
+
+.texto-bajo{
+    font-family: Gotham-Book !important; 
+}
+
+.mymodalconfirm .modal-header{  
+    background-color: #AE105A !important;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+input[type=text]:focus:not([readonly]) + label {
+    color: #AE105A; 
+}
+
+input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #AE105A;
+    box-shadow: 0 1px 0 0 #AE105A; 
+}
+
+.boton-secundario{
+    background-color: #AE105A; 
+    border: 2px solid #AE105A;
+}
+
+.txt {
+    word-break: break-all;   
+    font-size: 14px;
+    
+  }
+
+  .under{
+    color: #AE105A;
+    text-decoration: underline;
+    cursor: pointer;
+}

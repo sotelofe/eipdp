@@ -1,0 +1,47 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html {
+    position: relative;
+    min-height: 100%;
+  }
+
+
+  
+h5 {
+  font-size: 15px !important;
+}
+
+mdb-accordion-item-head {
+  & .card-header a {
+    color: #AE105A !important;
+  }
+}
+
+.custom-class .nav-item.active .nav-link {
+  background-color: #AE105A !important;
+  border-color: #AE105A !important;
+}
+
+.tab-content{
+  padding: 5px !important;
+}
+
+.toast-title{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.toast-message{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+mdb-checkbox.checkbox-teal [type="checkbox"]:checked+label:before {
+  border-color: transparent #AE105A #AE105A transparent;
+ 
+}
+
+mdb-checkbox.checkbox-warning-filled [type="checkbox"][class*='filled-in']:checked+label:after {
+  border-color: #AE105A ;
+  background-color: #AE105A ;
+  box-shadow: 0 0 0 1px #AE105A, 0 0 0 0.3rem rgba(174, 16, 90, 0.25);
+}

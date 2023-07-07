@@ -1,0 +1,256 @@
+<mdb-navbar  SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" class="navCss" [containerInside]="false">
+    <mdb-navbar-brand>
+        <a class="navbar-brand white-text" style="font-family: Gotham">EIPDP</a>
+    </mdb-navbar-brand>   
+</mdb-navbar>
+<div style="background-color: #AE105A  ; border: 1px solid; height: 100px;   filter: blur(1px); -webkit-filter: blur(4px);"></div>
+
+
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                          <form #formLogin="ngForm" (ngSubmit)="altaUsuario()">
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Alta de Usuario</p>
+                                <div class="row " style="padding: 40px;">
+                                    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 texto-primario texto-bajo">
+
+                                     
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputSujetoObligado" class="col-sm-5 col-form-label">Sujeto Obligado <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="text" class="form-control" id="inputSujetoObligado" maxlength="100" placeholder="" 
+                                                  name="sujeto" #sujeto="ngModel" [(ngModel)]="formUsuario.sujetoObligado" (keypress)="restrictNumeric($event)" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputNombreServidorPublico" class="col-sm-5 col-form-label">Nombre del servidor público <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="text" class="form-control" id="inputNombreServidorPublico" maxlength="100" placeholder=""
+                                                  name="nombreServidor" #nombreServidor="ngModel" [(ngModel)]="formUsuario.nombreServidorPublico" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputCargo" class="col-sm-5 col-form-label">Cargo del servidor público <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="text" class="form-control" id="inputCargo"  maxlength="100" placeholder=""
+                                                  name="cargo" #cargo="ngModel" [(ngModel)]="formUsuario.cargoServidorPublico" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputUsuario" class="col-sm-5 col-form-label">Usuario <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="text" class="form-control" id="inputUsuario" maxlength="30" placeholder="" autocomplete="off"
+                                                  name="usuarios" #usuarios="ngModel" [(ngModel)]="formUsuario.usuario" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputPass" class="col-sm-5 col-md-5 col-lg-5 col-xl-5 col-form-label">Contraseña <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 ">
+                                                  <input mdbInput type="{{tipo}}" class="form-control" id="inputPass" maxlength="50" placeholder="" autocomplete="off"
+                                                  name="contrasena" #contrasena="ngModel" [(ngModel)]="formUsuario.contrasena" required mdbTooltip="La contraseña debe contener al menos 8 caracteres y al menos una letra mayúscula, minúscula, un número, un carácter especial !  # $ % & ' ( ) * + , \ -. / : ; < = > ? @ [ ] ^ _ ` { | } &quot;  ">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputRepetirPass" class="col-sm-5 col-md-5 col-lg-5 col-xl-5 col-form-label">Repetir Contraseña <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7">
+                                                  <input mdbInput type="{{tipod}}" class="form-control" id="inputRepetirPass" maxlength="50" placeholder="" autocomplete="off"
+                                                  name="repetirContrasena" #repetirContrasena="ngModel" [(ngModel)]="formUsuario.repetirContrasena" required>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="form-group row">
+                                              <!-- Default input -->
+                                              <label for="inputRepetirPass" class="col-sm-5 col-md-5 col-lg-5 col-xl-5 col-form-label"> </label>
+                                              <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7">
+                                                <span style="font-size: 10px; text-align: center;">{{textoPass}}&nbsp;&nbsp;</span> <i class="{{icon}}" style="cursor: pointer;" (click)="verPass();"></i>
+                                              </div>
+                                              <div style="height: 50px;"></div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                            
+                                            <label for="inputEmail" class="col-sm-12 col-form-label">Datos de contacto Institucional </label>
+                                            
+                                           </div>
+
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputEmail" class="col-sm-5 col-form-label">Email Institucional <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="email" class="form-control" id="inputEmail" maxlength="100" placeholder=""
+                                                  name="emailInstitu" #emailInstitu="ngModel" [(ngModel)]="formUsuario.emailInstitucional" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputTelefono" class="col-sm-5 col-form-label">Teléfono <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="number" class="form-control" id="inputTelefono" pattern="\d*" maxlength="10"  placeholder="" 
+                                                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                  name="telefono" #telefono="ngModel" [(ngModel)]="formUsuario.telefono" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputExtension" class="col-sm-5 col-form-label">Extensión </label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="number" class="form-control" id="inputExtension" pattern="\d*" maxlength="5" placeholder=""
+                                                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                  name="extension" #extension="ngModel" [(ngModel)]="formUsuario.extensionTelefono" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputCelular" class="col-sm-5 col-form-label" >Celular</label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="number" class="form-control" id="inputCelular" pattern="\d*" maxlength="10" placeholder=""
+                                                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                  name="celular" #celular="ngModel" [(ngModel)]="formUsuario.celular">
+                                                </div>
+                                            </div>
+                                    </div>
+                                   
+                                    
+
+                                </div>
+
+                                <div class="row " >
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-1 mb-md-1 stycont">
+                                        <div class="row stycont">
+
+                                          
+                                          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 stycont">
+                                          </div>
+
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont" >
+                                            <button mdbBtn type="button"  class="btn-block texto-medio boton-primario" outline="true" (click)="cancelar();"mdbWavesEffect >Regresar</button>
+                                          </div>
+
+                                          <div class="separador"></div>
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont">
+                                            <button mdbBtn type="submit"  class="btn-block texto-medio boton-primario" outline="true"  [disabled]="formLogin.invalid" mdbWavesEffect>Guardar</button>
+                                          </div>
+
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                          </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+
+<div class="footer " style="background-color: #AE105A ; border: 1px solid; height: 100px; filter: blur(8px); -webkit-filter: blur(8px);"></div>
+
+<div mdbModal #frameAvisoPrivacidad="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top mt-0" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-xl cascading-modal mymodalconfirm " role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso de Privacidad</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameAvisoPrivacidad.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>      
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book; height: 750px;">
+        <!--<ng2-pdfjs-viewer pdfSrc="{{fileURL}}" viewerId="MyUniqueID" (onBeforePrint)="testBeforePrint()" (onAfterPrint)="testAfterPrint()" (onDocumentLoad)="testPagesLoaded($event)" (onPageChange)="testPageChange($event)">
+        </ng2-pdfjs-viewer>-->
+
+        <ng2-pdfjs-viewer 
+          #pdfViewerOnDemand
+          [externalWindow]="false"
+          [downloadFileName]="documento.nombre"
+          [openFile]="true"
+          [viewBookmark]="false"
+          [download]="true"
+        >
+        </ng2-pdfjs-viewer>
+      
+      </div>
+
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameAvisoPrivacidad.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 10px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div mdbModal #frameAlta="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameAlta.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>Su solicitud de alta ha sido enviada correctamente
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameAlta.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Guardando </p></ngx-spinner>

@@ -1,0 +1,320 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                         
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Activar Usuario</p>
+                                <div style="height: 80px;"></div>
+
+                                <div class="row ">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-lg-9 col-xl-9" ></div>
+                                                <div class="col-12 col-md-12 col-lg-3 col-xl-3 pl-0 pr-0">
+                                                    <button mdbBtn type="button"  class="btn-block texto-medio boton-primario "   outline="true" (click)="navegarAlta();"  mdbWavesEffect>Nuevo Usuario</button>
+                                                </div>
+
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" ></div>
+
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" >
+                                                  <div class="md-form">
+                                                    <input mdbInput type="text" id="form1" class="form-control texto-bajo" [(ngModel)]="textoBusqueda"  id="search">
+                                                    <label for="form1" class="texto-bajo">Búsqueda</label>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                              
+
+                                <div style="height: 20px;"></div>
+
+                                <div class="card">
+                                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4" ></h3>
+                                    <div class="card-body">
+                                      <div  >
+                                       
+                                        <table  mdbTable  #tableEl="mdbTable" class="table table-bordered table-responsive-md  text-center texto-bajo" mdbTableScroll  scrollY="true" maxHeight="600" >
+                                          <tr style=" background-color: #AE105A; color: white; ">
+                                            <th class="text-center">Usuario</th>
+                                            <th class="text-center">Email institucional</th>
+                                            <th class="text-center">Estatus</th>
+                                            
+                                            <th class="text-center">Acciones</th>
+                                            
+                                          </tr>
+                                          <tbody>
+                                          <tr *ngFor="let person of responseUsuario.usuario; let i = index">
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                              <span >{{person.usuario}}</span>
+                                            </td>
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                              <span>{{person.emailInstitucional}}</span>
+                                            </td>
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                              <i class="fa fa-user " style="color: #CCC; font-size: 30px;" *ngIf='person.activo === "I"'></i>
+                                              <i class="fa fa-user"  style="color: #007E33; font-size: 30px; cursor: pointer;" *ngIf='person.activo === "A"' mdbTooltip="Desactivar Usuario" (click)="setearUsuariod(person);"></i>                                              
+                                            </td>
+                                            
+                                            
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                              <span class="table-remove">
+
+                                                <i class="fa fa-check-square" mdbTooltip="Activar Usuario"  style="color: #1b5e20 ; font-size: 30px; cursor: pointer;" (click)="setearUsuario(person);" *ngIf='person.activo === "I"' >&nbsp;&nbsp;</i>
+                                                <i class="fa fa-check-square"   style="color: #CCC ; font-size: 30px; "  *ngIf='person.activo === "A"' >&nbsp;&nbsp;</i>
+                                                <i class="fa fa-address-card" mdbTooltip="Ver Detalles" style="color: #AE105A; font-size: 30px; cursor: pointer;" (click)="irDetalle(person)">&nbsp;&nbsp;</i>
+                                                <i class="fa fa-trash"  style="color: #AE105A; font-size: 30px; cursor: pointer;"  mdbTooltip="Eliminar Usuario" (click)="setearUsuarioEliminar(person);"></i>
+                                              </span>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                          <tfoot class="grey lighten-5 w-100">
+                                            <tr>
+                                              <td colspan="4">
+                                                <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="responseUsuario.usuario" dashKeyword="-" ofKeyword="de"></mdb-table-pagination>
+                                              </td>
+                                            </tr>
+                                            </tfoot>
+
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                
+                                 
+
+                               
+                            </div>
+                         
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>
+
+<div mdbModal #frameOk="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameOk.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>{{mensaje}}
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameOk.hide(); " mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div mdbModal #frameFail="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameFail.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>El usuario no se ha podido activar
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameFail.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div mdbModal #frameConfirm="mdbModal" [config]="{backdrop: 'static'}" class="modal fade" id="frameModalTop"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog mymodalconfirm cascading-modal modal-lg" role="document">
+
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Activar Usuario</h4>
+        
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>¿Está seguro que deseas activar el usuario seleccionado?</h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+       
+        <button mdbBtn type="button"  class=" texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="frameConfirm.hide()" (click)="activarUsuario()"  outline="true"  mdbWavesEffect>Si</button>
+        <button mdbBtn type="button"  class=" texto-medio boton-primario "  (click)="frameConfirm.hide()" outline="true"   mdbWavesEffect>No</button>
+      
+      </div>
+    </div>
+    <!--/.Content-->
+
+  </div>
+</div>
+
+<div mdbModal #frameConfirmDisabled="mdbModal" [config]="{backdrop: 'static'}" class="modal fade" id="frameModalTop"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog mymodalconfirm cascading-modal modal-lg" role="document">
+
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Desactivar Usuario</h4>
+        
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>¿Está seguro que deseas desactivar el usuario seleccionado?</h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+       
+        <button mdbBtn type="button"  class=" texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="frameConfirmDisabled.hide()" (click)="desactivarUsuario()"  outline="true"  mdbWavesEffect>Si</button>
+        <button mdbBtn type="button"  class=" texto-medio boton-primario "  (click)="frameConfirmDisabled.hide()" outline="true"   mdbWavesEffect>No</button>
+      
+      </div>
+    </div>
+    <!--/.Content-->
+
+  </div>
+</div>
+
+<div mdbModal #frameOkd="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameOk.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>El usuario se ha desactivado correctamente
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameOkd.hide(); " mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div mdbModal #frameEliminar="mdbModal" [config]="{backdrop: 'static'}" class="modal fade" id="frameModalTop"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog mymodalconfirm cascading-modal modal-lg" role="document">
+
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Eliminar Usuario</h4>
+        
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>¿Está seguro que deseas eliminar el usuario seleccionado?</h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+       
+        <button mdbBtn type="button"  class=" texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="frameEliminar.hide()" (click)="eliminar()"  outline="true"  mdbWavesEffect>Si</button>
+        <button mdbBtn type="button"  class=" texto-medio boton-primario "  (click)="frameEliminar.hide()" outline="true"   mdbWavesEffect>No</button>
+      
+      </div>
+    </div>
+    <!--/.Content-->
+
+  </div>
+</div>
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Cargando </p></ngx-spinner>

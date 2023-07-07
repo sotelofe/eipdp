@@ -1,0 +1,82 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                            <div class="card-body  z-depth-4">
+
+
+                                <div class="modal-content mymodalconfirm">
+                                    <!--Header-->
+                                    <div class="modal-header">
+                                      <p class="heading lead"></p>                                      
+                                    </div>
+                                    <!--Body-->
+                                    <div class="modal-body">
+                                       <div style="height:50px ;"></div> 
+                                      <div class="text-center">                                        
+
+                                          <button mdbBtn type="button"  class=" texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"   outline="true"  mdbWavesEffect (click)="nuevo()">Nuevo Trámite</button>
+                                          <button mdbBtn type="button"  class=" texto-medio boton-primario "   outline="true" (click)="navega('expedientes')"  mdbWavesEffect>Mis expedientes</button>
+                                        
+                                      </div>
+                                    </div>
+                                    <div style="height:350px ;"></div>
+                                    <!--Footer-->
+                                    <div class="modal-footer justify-content-center">
+                                      
+                                    </div>
+                                </div>                              
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 50px;"></div>
+<app-footer></app-footer>
+
+<div mdbModal #frameConfirm="mdbModal" [config]="{backdrop: 'static'}" class="modal fade" id="frameModalTop"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog mymodalconfirm cascading-modal modal-lg" role="document">
+
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+         Seleccione un trámite</h4>
+        
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 " style="font-family: Gotham-Book;">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <button mdbBtn type="button"  class="btn-block texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="navega('consulta')"   outline="true"  mdbWavesEffect>Nueva Consultas respecto a la obligación de elaborar y presentar una EIPDP</button>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 10px ;">
+                <button mdbBtn type="button"  class="btn-block texto-medio boton-primario "  (click)="navega('presentacion')" outline="true"   mdbWavesEffect>Nueva Presentación de EIPDP</button>                
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 10px ;">
+                <button mdbBtn type="button"  class="btn-block texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="navega('exencion')"   outline="true"  mdbWavesEffect>Nueva Presentación de informe de exención</button>                
+            </div>
+        </div>
+      </div>
+      <div style="font-family: Gotham-Book;">               
+        <button mdbBtn type="button"  class=" texto-medio boton-primario "  (click)="frameConfirm.hide()" outline="true"   mdbWavesEffect>Cancelar</button>
+      
+      </div>
+    </div>
+    <!--/.Content-->
+
+  </div>
+</div>

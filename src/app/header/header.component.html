@@ -1,0 +1,133 @@
+<mdb-navbar  SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" class="navCss" [containerInside]="false">
+    <mdb-navbar-brand><a class="navbar-brand white-text" style="font-family: Gotham">EIPDP</a></mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav mr-auto" style="font-family: Gotham-Book" >
+        
+        
+        <li class="nav-item " [ngClass]="{active: paginaActual==='inicio'}" *ngIf="inicio">
+              <a [routerLink]="['/inicio']" class="nav-link waves-light men" mdbWavesEffect >{{menu1}}</a>
+        </li>
+        
+        <li class="nav-item" [ngClass]="{active: paginaActual==='alta'}" *ngIf="alta_usuario">
+              <a [routerLink]="['/alta']" class="nav-link waves-light men" mdbWavesEffect >{{menu2}}</a>
+        </li>
+
+        <li class="nav-item" [ngClass]="{active: paginaActual==='activar'}" *ngIf="activar_usuario">
+          <a [routerLink]="['/activar']" class="nav-link waves-light men" mdbWavesEffect >{{menu3}}</a>
+        </li>
+
+        <li class="nav-item dropdown" dropdown *ngIf="eipdp" [ngClass]="{active: paginaActual==='tramites'}"> 
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light men" mdbWavesEffect>
+            {{menu4}}<span class="caret"></span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown  " role="menu" style="border-color: gray; border-width: 1px;">
+            <a class="dropdown-item waves-light submen" mdbWavesEffect [routerLink]="['/consulta']" style="color: #AE105A;" *ngIf="consulta">{{menu5}}</a>
+            <a class="dropdown-item waves-light submen" mdbWavesEffect [routerLink]="['/presentacion']" style="color: #AE105A;" *ngIf="presentacion">{{menu6}}</a>
+            <a class="dropdown-item waves-light submen" mdbWavesEffect [routerLink]="['/exencion']" style="color: #AE105A;" *ngIf="exencion">{{menu7}}</a>
+           
+          </div>
+        </li>
+
+        <li class="nav-item" [ngClass]="{active: paginaActual==='activar'}" *ngIf="notificacion">
+          <a [routerLink]="['/notificaciones']" class="nav-link waves-light men" mdbWavesEffect >{{menu8}}</a>
+        </li>
+
+        <li class="nav-item dropdown" dropdown *ngIf="manuales" [ngClass]="{active: paginaActual==='manuales'}"> 
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light men" mdbWavesEffect>
+            {{menu9}}<span class="caret"></span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown  " role="menu" style="border-color: gray; border-width: 1px;" >
+            <div  *ngFor="let d of listaManuales" style="margin: 0px ;">
+                <div *ngIf="d.tipo === 1" style="font-weight: bold ;">
+                  <a class="dropdown-item waves-light submen" mdbWavesEffect  style="color: #AE105A;" > <i class="fa fa-sort-desc " style=" font-size: 20px;"></i>&nbsp; {{d.descripcion}}</a>
+                </div>    
+                <div *ngIf="d.tipo === 2" style="padding-left: 20px;">
+                  <a class="dropdown-item waves-light submen" mdbWavesEffect  style="color: #AE105A;" (click)="metodo(d.valor, d.descripcion)" > <i class="fa fa-file-pdf-o " style=" font-size: 12px;" ></i>&nbsp; {{d.descripcion}}</a>
+                </div>    
+            </div>
+           
+          </div>
+          
+        </li>
+
+      </ul>
+  
+      <ul class="navbar-nav ml-auto nav-flex-icons" style="font-family: Gotham-Book">
+        <li class="nav-item text-center">
+          <a class="nav-link">
+            <div>Bienvenid@ {{aliasUsuario}}</div>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="btn-group" mdbDropdown>
+              <mdb-icon  icon="user-circle fa" mdbDropdownToggle size="2x"></mdb-icon>
+              <i class="fa fa user" ></i>
+              <div class="dropdown-menu dropdown-menu-right " style="border-color: gray; border-width: 1px; padding: 10px;">
+                <a class="dropdown-item submen"  mdbWavesEffect [routerLink]="['/login']" (click)="cerrarSesion()" style="border-radius: 2px;">Cerrar Sesión</a>
+                <a class="dropdown-item submen"  mdbWavesEffect (click)="modificarCuenta()" style="border-radius: 2px;">Modificar Cuenta</a>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      
+    </links>
+  </mdb-navbar>
+  <div style="background-color: #AE105A  ; border: 1px solid; height: 100px;   filter: blur(1px); -webkit-filter: blur(4px);">
+
+  </div>
+
+
+  <div mdbModal #frameManuales="mdbModal" [config]="{backdrop: 'static'}" class="modal " id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-xl  cascading-modal mymodalconfirm " role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text" style="text-align: center !important;" >
+        <h4 class="title" style="font-family: Gotham-medium; ">
+         {{titulo}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameManuales.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>      
+      </div>
+      <div style="text-align:right ; margin-right: 50px ;" *ngIf="muestraIcono == true" >
+        <i class="fa fa-file-word-o" style=" font-size: 30px;  cursor: pointer;" mdbTooltip="Descarga en formato .docx" (click)="descargaWord()"></i>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book; height: 750px;">
+       
+        <ng2-pdfjs-viewer 
+          #pdfViewerOnDemand
+          [externalWindow]="false"
+          [downloadFileName]="documento.nombre"
+          [openFile]="true"
+          [viewBookmark]="false"
+          [download]="true"
+        >
+        </ng2-pdfjs-viewer>
+      
+      </div>
+
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameManuales.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 10px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

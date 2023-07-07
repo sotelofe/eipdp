@@ -1,0 +1,122 @@
+.boton-primario{
+    color: #AE105A; 
+    border: 2px solid #AE105A;
+}
+
+.texto-medio{
+    font-family: Gotham-medium !important; 
+}
+
+textarea:focus,  input:focus, input[type]:focus {
+    border-color: #AE105A !important;
+    box-shadow: 0 1px 1px  #AE105A inset, #C15098 0 0 8px  !important;
+    outline: 0 none !important;
+}
+
+
+.texto-titulo{
+    font-family: Gotham !important;
+    font-size: 20px !important;
+}
+
+
+
+.texto-primario-center{
+    color: #AE105A !important;
+    text-align: center;
+}
+
+@media only screen and (max-width: 992px) {  
+    .texto-primario{
+        color: #AE105A !important;
+        text-align: left;
+    }
+} 
+
+@media only screen and (min-width: 993px) {  
+    .texto-primario{
+        color: #AE105A !important;
+        text-align: right;
+    }
+} 
+
+@media only screen and (max-width: 992px) {  
+    .separador{
+        height: 50px;
+        display: block;
+    }
+} 
+
+.texto-bajo{
+    font-family: Gotham-Book !important; 
+}
+
+.mymodalconfirm .modal-header{  
+    background-color: #AE105A !important;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.boton-secundario{
+    background-color: #AE105A; 
+    border: 2px solid #AE105A;
+}
+
+input[type=radio]:focus:not([readonly]) + label {
+    color: #AE105A; 
+}
+
+input[type=radio]:focus:not([readonly]) {
+    background: #AE105A !important;
+} 
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #AE105A !important;
+    border-color: #AE105A !important;
+    background-color: #AE105A;
+    box-shadow: 0 0 0 1px #AE105A, 0 0 0 0.3rem rgba(174, 16, 90, 0.25);
+    
+}
+
+textarea {
+    resize: none;
+ }
+
+ .form-control{
+     color: #AE105A;;
+ }
+
+ .texto-bajo-primario{
+    color: #AE105A !important;
+}
+
+
+card-body{
+    width: 900px !important;
+}
+
+li.stepper{
+    width: 900px !important;
+}
+
+li.step{
+    width: 900px !important;
+}
+
+.texto-font-color{
+    font-family: Gotham-Book !important; 
+}
+
+h5 {
+    font-size: 10pt !important;
+}
+
+.required{
+    color: red !important;
+}
+
+.cursor-help{
+    cursor: pointer;
+}

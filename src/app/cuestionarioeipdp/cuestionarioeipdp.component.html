@@ -1,0 +1,95 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                         
+                            <div class="card-body  z-depth-4">
+                                <div style="height: 30px;"></div>
+
+                                <div class="row ">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                            <div class="row " style="text-align: justify">
+                                                <div class="col-12 col-md-12 col-lg-9 col-xl-9" ></div>
+                                                <div class="col-12 col-md-12 col-lg-3 col-xl-3 pl-0 pr-0">
+                                                </div>
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" >
+                                                    <mdb-stepper #stepper [vertical]="true" class="texto-bajo responsive">
+                                                        <mdb-step name="Step 1" label="Type something" [stepForm]="firstFormGroup">
+                                                          <form [formGroup]="firstFormGroup">
+                                                            <div class="md-form overflow-auto" >
+                                                              <p>Cargue el archivo correspondiente: </p>
+                                                              <input type="text" class="form-control" mdbInput mdbValidate formControlName="email">
+                                                              <label for="">Email</label>
+                                                              <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">Input invalid</mdb-error>
+                                                              <mdb-success *ngIf="email.valid && (email.dirty || email.touched)">Input valid</mdb-success>
+                                                            </div>
+                                                          </form>
+                                                          <button mdbBtn size="sm" color="primary" (click)="stepper.next()">CONTINUE</button>
+                                                        </mdb-step>
+                                                        <mdb-step name="Step 2" [stepForm]="secondFormGroup">
+                                                          <form [formGroup]="secondFormGroup">
+                                                            <div class="md-form">
+                                                              <input type="password" class="form-control" mdbInput mdbValidate formControlName="password">
+                                                              <label for="">Password</label>
+                                                              <mdb-error *ngIf="password.invalid && (password.dirty || password.touched)">Input invalid</mdb-error>
+                                                              <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid</mdb-success>
+                                                            </div>
+                                                          </form>
+                                                          <button mdbBtn size="sm" color="primary" (click)="stepper.next()">CONTINUE</button>
+                                                          <button mdbBtn size="sm" color="secondary" (click)="stepper.previous()">BACK</button>
+                                                        </mdb-step>
+                                                        <mdb-step name="Step 3" label="Step 3 label">
+                                                          <p class="pl-2">Finish!</p>
+                                                          <div class="step-actions">
+                                                            <button mdbBtn  size="sm" color="primary" (click)="onSubmit()">SUBMIT</button>
+                                                          </div>
+                                                        </mdb-step>
+                                                    </mdb-stepper>
+                                                </div>
+
+                                               
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 " >
+                                                    <div class="row" style="text-align: justify">
+
+                                                    <div class="col-12 col-md-12 col-lg-10 col-xl-10 " >
+                                                                
+                                                    </div>
+                                                    <div class="col-12 col-md-12 col-lg-2 col-xl-2 " style=" padding: 0px;">
+                                                        <button mdbBtn type="button"  class="btn-block texto-medio boton-primario" outline="true" >Enviar</button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12 " style="height: 250px;" >
+                                                </div>
+                                               
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               
+                            </div>
+                         
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>
+
+
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Guardando </p></ngx-spinner>

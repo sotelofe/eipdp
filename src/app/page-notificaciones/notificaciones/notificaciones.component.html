@@ -1,0 +1,163 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >            
+            <div class="container">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Notificaciones</p>
+                                <div style="height: 80px;"></div>
+
+                                                                
+                                <div class="row ">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-lg-5 col-xl-5" ></div>
+
+                                                <div class="col-12 col-md-12 col-lg-4 col-xl-4 pl-0 pr-1 mt-2">
+                                                    <button mdbBtn type="button"  class="btn-block texto-medio boton-primario "   outline="true" (click)="actualizar();"  mdbWavesEffect>Actualizar Notificaciones</button>
+                                                </div>
+
+                                                <div class="col-12 col-md-12 col-lg-3 col-xl-3 pl-0 pr-1 mt-2">
+                                                    <button mdbBtn type="button"  class="btn-block texto-medio boton-primario "  outline="true" (click)="navegarAlta();"  mdbWavesEffect>Nueva Notificación </button>
+                                                </div>
+
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" ></div>
+
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" >
+                                                  <div class="md-form">
+                                                    <input mdbInput type="text" id="form1" class="form-control texto-bajo" [(ngModel)]="textoBusqueda"  id="search">
+                                                    <label for="form1" class="texto-bajo">Búsqueda</label>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div style="height: 20px;"></div>
+
+                                <div class="card">
+                                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4" ></h3>
+                                    <div class="card-body">
+                                      <div  >
+                                       
+                                        <table  mdbTable  #tableEl="mdbTable" class="table table-bordered table-responsive-md  text-center texto-bajo" mdbTableScroll  scrollY="true" maxHeight="600" >
+                                          <tr style=" background-color: #AE105A; color: white; ">
+                                            <th class="text-center">Número de expediente</th>
+                                            <th class="text-center">Fecha</th>
+                                            <th class="text-center">Hora</th>
+                                            <th class="text-center">Tipo Mensaje</th>
+                                            <th class="text-center">Asunto</th>                                            
+                                            <th class="text-center">Acciones</th>                                            
+                                          </tr>
+
+                                            <tbody>
+                                                <tr *ngFor="let noti of lisNoti.listaNotificaciones; let i = index">
+                                                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                        <span >{{noti.folio}}</span>
+                                                    </td>
+
+                                                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                        <span>{{noti.fecha}}</span>
+                                                    </td>
+
+                                                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                        <span >{{noti.hora}}</span>
+                                                    </td>
+
+                                                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                        <span >{{noti.tipoMensaje}}</span>
+                                                    </td>
+
+                                                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                        <span >{{noti.asunto}}</span>
+                                                    </td>
+                                                    
+                                                    
+                                                    <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                        <span class="table-remove">                                                          
+                                                            <fa-icon [icon]="faDetalle"  mdbTooltip="Responder notificación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="detalleNotificaciones(noti)" *ngIf="noti.tipoMensaje === 'Enviado'"></fa-icon>
+                                                            <fa-icon [icon]="faDetalle"  mdbTooltip="Responder notificación"  style="color: #156689 ; font-size: 23px; cursor: pointer;" (click)="detalleNotificaciones(noti)" *ngIf="noti.tipoMensaje === 'Recibido' && noti.idEstatus === 1"></fa-icon>
+                                                            <fa-icon [icon]="faDetalle"  mdbTooltip="Responder notificación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="detalleNotificaciones(noti)" *ngIf="noti.tipoMensaje === 'Recibido' && noti.idEstatus === 2"></fa-icon>
+                                                            &nbsp;&nbsp;
+                                                            <fa-icon [icon]="faEliminar"  mdbTooltip="Eliminar"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="bajaNotificaciones(noti)"></fa-icon>                                                          
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                          
+                                            <tfoot class="grey lighten-5 w-100">
+                                                <tr>
+                                                <td colspan="6">
+                                                    <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="lisNoti.listaNotificaciones" dashKeyword="-" ofKeyword="de"></mdb-table-pagination>
+                                                </td>
+                                                </tr>
+                                            </tfoot>
+
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                
+                      
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>
+
+<div mdbModal #frameAlta="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameAlta.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>La notificación se ha eliminado correctamente
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameAlta.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Enviando </p></ngx-spinner>

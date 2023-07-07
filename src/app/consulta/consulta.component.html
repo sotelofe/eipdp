@@ -1,0 +1,491 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                         
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Consultas respecto a la obligación de elaborar y presentar una EIPDP</p>
+                                <div style="height: 80px;"></div>
+
+                                <div class="row ">
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12 col-lg-9 col-xl-9" ></div>
+                                                <div class="col-12 col-md-12 col-lg-3 col-xl-3 pl-0 pr-0">
+                                                    <button mdbBtn type="button"  class="btn-block texto-medio boton-primario "   outline="true" (click)="preconsulta();"  mdbWavesEffect>Nueva Consulta</button>
+                                                </div>
+
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" ></div>
+
+                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12" >
+                                                  <div class="md-form">
+                                                    <!--<input mdbInput type="text" id="form1" class="form-control texto-bajo" [(ngModel)]="textoBusqueda"  id="search">-->
+                                                    <input mdbInput type="text" id="form1" class="form-control texto-bajo" [(ngModel)]="textoBusqueda"  id="search">
+                                                    <label for="form1" class="texto-bajo">Búsqueda</label>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="height: 20px;"></div>
+
+                                <div class="card">
+                                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4" ></h3>
+                                    <div class="card-body">
+                                      <div  >
+                                       
+                                        <table  mdbTable  #tableEl="mdbTable" class="table table-bordered table-responsive-md  text-center texto-bajo" mdbTableScroll  scrollY="true" maxHeight="600" >
+                                          <tr style=" background-color: #AE105A; color: white; ">
+                                            <th class="text-center">Sujeto obligado</th>
+                                            <th class="text-center">Trámite</th>
+                                            <th class="text-center">Folio</th>
+                                            <th class="text-center">Etapa</th>
+                                            <th class="text-center">Fecha Registro</th>
+                                            <th class="text-center" style="width: 155px ;">Estatus</th>
+                                            <th class="text-center">Acciones</th>
+                                            
+                                          </tr>
+                                          <tbody>
+                                          <tr *ngFor="let lf of lista; let i = index">
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                <span >{{lf.usuario}}</span>
+                                            </td>
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                <span>Consultas respecto a la obligación de elaborar y presentar una EIPDP
+                                                </span>
+                                            </td>
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                <span class="under" (click)="navegaHistorico(lf)">{{lf.folio}}</span>
+                                            </td>
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                              <!--<span *ngIf=" lf.tuvoRia == true && lf.idEtapa == 43; else elseBlock" >Ria no Presentada</span>                                             
+                                              <ng-template #elseBlock><span >{{lf.etapa}}</span></ng-template>-->
+                                              <span >{{lf.etapa}}</span>
+                                            </td>
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                                <span >{{lf.fecha}}</span>
+                                            </td>
+
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                                              
+                                                <span *ngIf="(lf.idColorRia == null || lf.idColorRia == 0) && lf.idColor!=35">
+                                                  <span style="font-size: 12px;">General</span>
+                                                  <br>
+                                                    <fa-icon [icon]="faCircle"    style="color: #008B37 ; font-size: 23px;"  *ngIf="lf.idColor == 32"></fa-icon>
+                                                    <fa-icon [icon]="faCircle"    style="color: #F77A00 ; font-size: 23px;"  *ngIf="lf.idColor == 34"></fa-icon>
+                                                    <fa-icon [icon]="faCircle"    style="color: #F70000 ; font-size: 23px;"  *ngIf="lf.idColor == 33"></fa-icon>
+                                                </span >
+                                                <span *ngIf="(lf.idColorRia !=null && lf.idColorRia > 0) && lf.idColorRia !=35">
+                                                  <div class="row">
+                                                      <div class="col-12 col-md-12  col-lg-6 col-xl-6">
+                                                        <span style="font-size: 12px;">General</span>
+                                                        <br>
+                                                        <fa-icon [icon]="faCircle"    style="color: #008B37 ; font-size: 23px;"  *ngIf="lf.idColor == 32"></fa-icon>
+                                                        <fa-icon [icon]="faCircle"    style="color: #F77A00 ; font-size: 23px;"  *ngIf="lf.idColor == 34"></fa-icon>
+                                                        <fa-icon [icon]="faCircle"    style="color: #F70000 ; font-size: 23px;"  *ngIf="lf.idColor == 33"></fa-icon>
+                                                      </div>
+                                                      <div class="col-12 col-md-12  col-lg-6 col-xl-6">
+                                                        <span style="font-size: 12px;">RIA</span>
+                                                        <br>
+                                                        <fa-icon [icon]="faCircle"    style="color: #008B37 ; font-size: 23px;"  *ngIf="lf.idColorRia == 32"></fa-icon>
+                                                        <fa-icon [icon]="faCircle"    style="color: #F77A00 ; font-size: 23px;"  *ngIf="lf.idColorRia == 34"></fa-icon>
+                                                        <fa-icon [icon]="faCircle"    style="color: #F70000 ; font-size: 23px;"  *ngIf="lf.idColorRia == 33"></fa-icon>
+                                                      </div>
+                                                  </div>
+                                                </span>
+                                                
+                                            </td>
+                                                                                        
+                                            <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+
+                                              <span class="table-remove" *ngIf="usuario.usuario.idPerfil == 1 " >  
+
+                                                <div *ngIf=" lf.tuvoRia == false">
+                                                  <div *ngIf=" lf.idEtapa != 43">
+                                                    
+                                                   
+                                                    
+                                                    <div *ngIf="lf.idEtapa === 22">
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileAlt"  mdbTooltip="Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarPrecargaCuestionarioF1(lf.folio)" *ngIf="lf.idEtapa != 24 && lf.idEtapa != 25"></fa-icon>&nbsp;
+                                                      <fa-icon ></fa-icon>
+                                                      <fa-icon ></fa-icon>
+                                                    </div>
+
+                                                    <div *ngIf="lf.idEtapa === 58">                                                      
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <!--<fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon [icon]="faFileSignature"  mdbTooltip="Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarAcuerdoAdmision(lf.folio);" *ngIf="lf.idEtapa == 58"></fa-icon>&nbsp;
+                                                      <fa-icon ></fa-icon>
+                                                    </div>
+
+                                                    <div *ngIf="lf.idEtapa === 24">
+                                                      &nbsp;
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <!--<fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0" ></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileSignature"  mdbTooltip="Cargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarOpinionTecnica(lf.folio);" *ngIf="lf.idEtapa == 24"></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileSignature"  mdbTooltip="Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarAcuerdoAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 1"></fa-icon>&nbsp;
+                                                    </div>
+                                                    <div *ngIf="lf.idEtapa === 25">
+                                                     
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                     <!-- <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0"></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDetalleOpinionTecnica(lf.folio);" *ngIf="lf.idEtapa == 25" ></fa-icon>&nbsp;
+
+                                                      <fa-icon [icon]="faFileSignature"  mdbTooltip="Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarAcuerdoAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 1"></fa-icon>&nbsp;
+                                                    </div>
+                                                  </div>
+                                                  <fa-icon [icon]="faNotificacion"  mdbTooltip="Iniciar Notificación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarNuevaNotificacion(lf.folio);"></fa-icon>
+                                                  &nbsp;
+                                                  <fa-icon [icon]="faFolder"  mdbTooltip="Ver Expediente"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="verExpediente(lf);"></fa-icon>
+                                                </div>
+
+                                               
+                                                <div *ngIf=" lf.tuvoRia == true">
+                                                  <div *ngIf="lf.idEtapa === 26">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileUpload"  mdbTooltip="Cargar RIA"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarRia(lf.folio);" ></fa-icon>&nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                    <fa-icon ></fa-icon>                                                    
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 58">                                                      
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;                                                    
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileSignature"  mdbTooltip="Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarAcuerdoAdmision(lf.folio);" *ngIf="lf.idEtapa == 58"></fa-icon>&nbsp;
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 27">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Revisión RIA"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarRevisionRia(lf.folio);" ></fa-icon>&nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 24">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0" ></fa-icon>&nbsp;                                                    
+                                                    <fa-icon [icon]="faFileSignature"  mdbTooltip="Cargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarOpinionTecnica(lf.folio);" ></fa-icon>
+                                                  </div>
+                                                  
+                                                  <div *ngIf="lf.idEtapa === 25">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0" ></fa-icon>&nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDetalleOpinionTecnica(lf.folio);" ></fa-icon>                                                  
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 28">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileUpload"  mdbTooltip="Notificar RIA no presentada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarRiaNoPresentadaFu(lf.folio)" ></fa-icon>&nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 59">
+                                                    <fa-icon [icon]="faFileAlt"  mdbTooltip="Notificación de RIA no presentada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarVerRiaNoPresentadaFu(lf.folio)" ></fa-icon>&nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+                                                  <fa-icon [icon]="faNotificacion"  mdbTooltip="Iniciar Notificación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarNuevaNotificacion(lf.folio);"></fa-icon>
+                                                  &nbsp;
+                                                  <fa-icon [icon]="faFolder"  mdbTooltip="Ver Expediente"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="verExpediente(lf);"></fa-icon>
+                                                </div> 
+                                               
+                                                
+                                              </span>
+                                              
+                                              <span class="table-remove" *ngIf="usuario.usuario.idPerfil == 2 " >  
+
+                                                <div *ngIf=" lf.tuvoRia == false">
+                                                  <div *ngIf=" lf.idEtapa != 43">
+                                                    
+                                                   
+                                                    
+                                                    <div *ngIf="lf.idEtapa === 22">
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <fa-icon ></fa-icon>
+                                                      <fa-icon ></fa-icon>
+                                                      <fa-icon ></fa-icon>
+                                                    </div>
+                                                    
+
+                                                    <div *ngIf="lf.idEtapa === 58">                                                      
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <!--<fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon ></fa-icon>
+                                                      <fa-icon ></fa-icon>
+                                                    </div>
+
+                                                    <div *ngIf="lf.idEtapa === 24">
+                                                      &nbsp;
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <!--<fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" ></fa-icon>&nbsp;
+                                                      <fa-icon ></fa-icon>
+                                                    </div>
+                                                    <div *ngIf="lf.idEtapa === 25">
+                                                     
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <!--<fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" ></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDetalleOpinionTecnica(lf.folio);" *ngIf="lf.idEtapa == 25" ></fa-icon>&nbsp;
+                                                    </div>
+                                                  </div>
+                                                  <fa-icon [icon]="faNotificacion"  mdbTooltip="Iniciar Notificación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarNuevaNotificacion(lf.folio);"></fa-icon>
+                                                  &nbsp;
+                                                  <fa-icon [icon]="faFolder"  mdbTooltip="Ver Expediente"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="verExpediente(lf);"></fa-icon>
+                                                </div>
+
+                                                <div *ngIf=" lf.tuvoRia == true">
+                                                  <div *ngIf="lf.idEtapa === 26">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileUpload"  mdbTooltip="Cargar RIA"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarRia(lf.folio);" ></fa-icon>&nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 58">                                                      
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 27">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 24">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0" ></fa-icon>&nbsp;                                                    
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+                                                  
+                                                  <div *ngIf="lf.idEtapa === 25">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0" ></fa-icon>&nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDetalleOpinionTecnica(lf.folio);" ></fa-icon>                                                  
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 28">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 59">
+                                                    <fa-icon [icon]="faFileAlt"  mdbTooltip="Notificación de RIA no presentada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarVerRiaNoPresentadaFu(lf.folio)" ></fa-icon>&nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+                                                  <fa-icon [icon]="faNotificacion"  mdbTooltip="Iniciar Notificación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarNuevaNotificacion(lf.folio);"></fa-icon>
+                                                  &nbsp;
+                                                  <fa-icon [icon]="faFolder"  mdbTooltip="Ver Expediente"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="verExpediente(lf);"></fa-icon>
+                                                </div> 
+                                                
+                                                
+                                              </span>
+
+                                              <span class="table-remove" *ngIf="usuario.usuario.idPerfil == 3 " >  
+
+                                                <div *ngIf=" lf.tuvoRia == false">
+                                                  <div *ngIf=" lf.idEtapa != 43">
+                                                    
+                                                   
+                                                    
+                                                    <div *ngIf="lf.idEtapa === 22">
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileAlt"  mdbTooltip="Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarPrecargaCuestionarioF1(lf.folio)" *ngIf="lf.idEtapa != 24 && lf.idEtapa != 25"></fa-icon>&nbsp;
+                                                      <fa-icon ></fa-icon>
+                                                      <fa-icon ></fa-icon>
+                                                    </div>
+
+                                                    <div *ngIf="lf.idEtapa === 58">                                                      
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <!--<fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon [icon]="faFileSignature"  mdbTooltip="Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarAcuerdoAdmision(lf.folio);" *ngIf="lf.idEtapa == 58"></fa-icon>&nbsp;
+                                                      <fa-icon ></fa-icon>
+                                                    </div>
+
+                                                    <div *ngIf="lf.idEtapa === 24">
+                                                      &nbsp;
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <!--<fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0" ></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileSignature"  mdbTooltip="Cargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarOpinionTecnica(lf.folio);" *ngIf="lf.idEtapa == 24"></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileSignature"  mdbTooltip="Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarAcuerdoAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 1"></fa-icon>&nbsp;
+                                                    </div>
+                                                    <div *ngIf="lf.idEtapa === 25">
+                                                     
+                                                      <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;
+                                                      <!--<fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Documento de Aceptación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaAceptacionF1(lf.folio)" *ngIf="lf.idEtapa != 22 " ></fa-icon>&nbsp;-->
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0"></fa-icon>&nbsp;
+                                                      <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDetalleOpinionTecnica(lf.folio);" *ngIf="lf.idEtapa == 25" ></fa-icon>&nbsp;
+
+                                                      <fa-icon [icon]="faFileSignature"  mdbTooltip="Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarAcuerdoAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 1"></fa-icon>&nbsp;
+                                                    </div>
+                                                  </div>
+                                                  <fa-icon [icon]="faNotificacion"  mdbTooltip="Iniciar Notificación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarNuevaNotificacion(lf.folio);"></fa-icon>
+                                                  &nbsp;
+                                                  <fa-icon [icon]="faFolder"  mdbTooltip="Ver Expediente"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="verExpediente(lf);"></fa-icon>
+                                                </div>
+
+                                                <div *ngIf=" lf.tuvoRia == true">
+                                                  <div *ngIf="lf.idEtapa === 26">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileUpload"  mdbTooltip="Cargar RIA"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarRia(lf.folio);" ></fa-icon>&nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                    <fa-icon ></fa-icon>                                                    
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 58">                                                      
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>&nbsp;                                                    
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileSignature"  mdbTooltip="Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarAcuerdoAdmision(lf.folio);" *ngIf="lf.idEtapa == 58"></fa-icon>&nbsp;
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 27">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Revisión RIA"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarRevisionRia(lf.folio);" ></fa-icon>&nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 24">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0" ></fa-icon>&nbsp;                                                    
+                                                    <fa-icon [icon]="faFileSignature"  mdbTooltip="Cargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarOpinionTecnica(lf.folio);" ></fa-icon>
+                                                  </div>
+                                                  
+                                                  <div *ngIf="lf.idEtapa === 25">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA enviada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaEnviada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Acuerdo de Admisión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDescargarAdmision(lf.folio);" *ngIf="lf.permiteAcuerdo == 0" ></fa-icon>&nbsp;
+                                                    <fa-icon [icon]="faFileContract"  mdbTooltip="Descargar Opinión Técnica"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarDetalleOpinionTecnica(lf.folio);" ></fa-icon>                                                  
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 28">
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileUpload"  mdbTooltip="Notificar RIA no presentada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarRiaNoPresentadaFu(lf.folio)" ></fa-icon>&nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+
+                                                  <div *ngIf="lf.idEtapa === 59">
+                                                    <fa-icon [icon]="faFileAlt"  mdbTooltip="Notificación de RIA no presentada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarVerRiaNoPresentadaFu(lf.folio)" ></fa-icon>&nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar Cuestionario"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaCuestionarioF1(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon [icon]="faFileDownload"  mdbTooltip="Descargar RIA solicitada"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargaRiaSolicitada(lf.folio)" ></fa-icon>
+                                                    &nbsp;
+                                                    <fa-icon ></fa-icon>
+                                                  </div>
+                                                  <fa-icon [icon]="faNotificacion"  mdbTooltip="Iniciar Notificación"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="navegarNuevaNotificacion(lf.folio);"></fa-icon>
+                                                  &nbsp;
+                                                  <fa-icon [icon]="faFolder"  mdbTooltip="Ver Expediente"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="verExpediente(lf);"></fa-icon>
+                                                </div>                                                                                                 
+                                              </span>                                                                                          
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                          <tfoot class="grey lighten-5 w-100">
+                                            <tr>
+                                              <td colspan="7">
+                                                <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="lista" dashKeyword="-" ofKeyword="de"></mdb-table-pagination>
+                                              </td>
+                                            </tr>
+                                            </tfoot>
+
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                               
+                            </div>
+                          
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>
+
+
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Cargando </p></ngx-spinner>

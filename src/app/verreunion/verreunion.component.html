@@ -1,0 +1,172 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<form [formGroup]="form" (ngSubmit)="guardarReunion();">
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                          
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Solicitudes de Reunión</p>
+                                <div style="height: 30px;"></div>
+
+                                    <div class="card-body z-depth-1" >
+                                        
+
+                                        <div class="card"  style="margin-top: 20px; margin: 15px;">
+                                            <h3 class="card-header text-center font-weight-bold text-uppercase py-4" ></h3>
+                                                <div class="card-body">
+                                                    <div>
+                                                        <table  mdbTable  #tableEl="mdbTable" class="table table-bordered table-responsive-md  texto-bajo" mdbTableScroll  scrollY="true" maxHeight="400" >
+                                                            <tr style=" background-color: #AE105A; color: white; ">
+                                                            <th class="text-center">Folio</th>
+                                                            <th class="text-center">No. Reunión</th>
+                                                            <th class="text-center">Asunto</th>
+                                                            <th class="text-center">Estatus Reunión</th>
+                                                            <th class="text-center">Descargar Minuta</th>
+                                                            </tr>
+                                                            <tbody>
+                                                                <tr *ngFor="let fc of formPreconsulta; let i = index">
+                                                                    <td >
+                                                                        <span >{{fc.folio}}</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span >{{fc.subpregunta}}</span>
+                                                                    </td>
+                                                                    <td class="text-center" >
+                                                                        <fa-icon    [icon]="faFileAlt"  mdbTooltip="Detalle Reunión"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="detalleReunion(fc.respuesta);" ></fa-icon>
+                                                                    </td>
+                                                                    <td >
+                                                                        <span *ngIf="fc.rutaArchivo == null || fc.rutaArchivo === '' ">Pendiente</span>
+                                                                        <span *ngIf="fc.rutaArchivo != null && fc.rutaArchivo != '' ">Realizada</span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <fa-icon  *ngIf="fc.rutaArchivo != null && fc.rutaArchivo != '' "  [icon]="faFileDownload"  mdbTooltip="Descargar Minuta"  style="color: #AE105A ; font-size: 23px; cursor: pointer;" (click)="descargarMinuta(fc.rutaArchivo,10);" ></fa-icon>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+
+
+                                    </div>
+
+                                <div class="" style="height: 30px;" ></div>
+                            </div>
+                         
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>
+
+<form [formGroup]="formAprobar" (ngSubmit)="aceptar();">
+    <div mdbModal #frameOk="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+      tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+      <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content ">
+    
+          <!--Header-->
+          <div class="modal-header  darken-3 white-text text-center">
+            <h4 class="title" style="font-family: Gotham-medium;">
+              Adjuntar Minuta</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="frameOk.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    
+          <!--Body-->
+         
+            <div class="modal-body mb-0 " style="font-family: Gotham-Book; font-size: 20px;">
+                <span>Favor de adjuntar el documento de minuta</span><span style="color: red;">*</span>
+                <div class="md-form input-group mb-3 ">
+                    <input type="file"  mdbBtn class="form-control m-0 px-3 py-2" aria-describedby="button-addon2" id="aprobar" (change)="onFileChange($event)" #fileInput accept=".pdf">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12" style="padding: 0px; margin: 0px;">
+                      <div class="row" style="padding: 0px; margin: 0px;"> 
+                        <div class="col-7 col-md-7 col-lg-7 col-xl-7" style="padding: 0px; margin: 0px;"></div>
+                        <div class="col-5 col-md-5 col-lg-5 col-xl-5 texto-bajo-primario" style="padding: 0px; margin: 0px; font-size: 14px; text-align: right;">
+                          <span>Peso máximo: 2 mb, extensión: .pdf</span>
+                        </div>
+                      </div>
+                   </div>
+                </div>
+            </div>
+            <div class="text-center" style="font-family: Gotham-Book;">
+                
+                <div class="row " >
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                       
+                        <button mdbBtn type="button"  class=" texto-medio boton-secundario"  style="background-color: #AE105A; color: white;"  (click)="frameOk.hide()"  outline="true"  mdbWavesEffect>Cancelar</button>
+                        <button mdbBtn type="submit"  class=" texto-medio boton-primario "  (click)="frameOk.hide()" outline="true" [disabled]="acceptarFuno.upload.filename === ''"  mdbWavesEffect>Aceptar</button>
+                    </div>
+                </div>
+                <div style="height: 20px;"></div>
+          </div>
+       
+    
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
+    </form>
+
+
+    <div mdbModal #frameDetalle="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+    tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+    <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content ">
+  
+        <!--Header-->
+        <div class="modal-header  darken-3 white-text text-center">
+          <h4 class="title" style="font-family: Gotham-medium;">
+            Detalle Reunión</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="frameDetalle.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+  
+        <!--Body-->
+       
+          <div class="modal-body mb-0 " style="font-family: Gotham-Book; font-size: 20px;">
+             
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12" >
+                    <div class="row" > 
+                      <div class="col-12 col-md-12 col-lg-12 col-xl-12" ></div>
+                         <textarea name="sdetalleReunion" [(ngModel)]="sdetalleReunion"  type="text" id="form7" style="background-color: white; border-radius: 35px; border: 15px solid #9c9c9c" class="md-textarea form-control texto-bajo" rows="8" mdbInput maxlength="1000"  style="background-color: white;" readonly></textarea>
+                    </div>
+                 </div>
+             
+          </div>
+          <div class="text-center" style="font-family: Gotham-Book;">
+              
+              <div class="row " >
+                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                      <button mdbBtn type="button"  class=" texto-medio boton-primario "  (click)="frameDetalle.hide()" outline="true"   mdbWavesEffect>Aceptar</button>
+                  </div>
+              </div>
+              <div style="height: 20px;"></div>
+        </div>
+     
+  
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Cargando </p></ngx-spinner>

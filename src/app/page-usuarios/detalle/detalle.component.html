@@ -1,0 +1,307 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                      <form autocomplete="off" #formDetalle="ngForm" (ngSubmit)="guardarEdicion()" >
+                        <div>                         
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Detalle de Usuario</p>
+                                <div class="row " style="padding: 40px;">
+                                    <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 texto-primario texto-bajo">
+
+                                     
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputSujetoObligado" class="col-sm-5 col-form-label">Sujeto Obligado <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="text" class="form-control" id="inputSujetoObligado" maxlength="100" placeholder="" 
+                                                  name="sujeto" #sujeto="ngModel" [(ngModel)]="formUsuario.sujetoObligado" [readonly]="isReadonlySujeto" [required]="esRequerido" (keypress)="restrictNumeric($event)">                                                          
+                                                          <span *ngIf="sujeto.invalid && (sujeto.dirty || sujeto.touched)" style="font-size: 12px; margin: 0px;">
+                                                            <span *ngIf="sujeto.errors?.['required']">
+                                                              Este campo es requerido.
+                                                            </span>
+                                                          </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" >
+                                                <!-- Default input -->
+                                                <label for="inputNombreServidorPublico" class="col-sm-5 col-form-label">Nombre del servidor publico <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="text" class="form-control" id="inputNombreServidorPublico" maxlength="100" placeholder=""
+                                                  name="nombreServidor" #nombreServidor="ngModel" [(ngModel)]="formUsuario.nombreServidorPublico" [readonly]="isReadonly" [required]="esRequerido">
+                                                        <span *ngIf="nombreServidor.invalid && (nombreServidor.dirty || nombreServidor.touched)" style="font-size: 12px; margin: 0px;">
+                                                          <span *ngIf="nombreServidor.errors?.['required']">
+                                                            Este campo es requerido.
+                                                          </span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputCargo" class="col-sm-5 col-form-label">Cargo del servidor publico <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="text" class="form-control" id="inputCargo"  maxlength="100" placeholder=""
+                                                  name="cargo" #cargo="ngModel" [(ngModel)]="formUsuario.cargoServidorPublico" [readonly]="isReadonly" [required]="esRequerido">
+                                                        <span *ngIf="cargo.invalid && (cargo.dirty || cargo.touched)" style="font-size: 12px; margin: 0px;">
+                                                          <span *ngIf="cargo.errors?.['required']">
+                                                            Este campo es requerido.
+                                                          </span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputUsuario" class="col-sm-5 col-form-label">Usuario <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="text" class="form-control" id="inputUsuario" maxlength="30" placeholder=""
+                                                  name="usuarios" #usuarios="ngModel" [(ngModel)]="formUsuario.usuario" [readonly]="isReadonlyUsuario"   [required]="esRequerido">
+                                                        <span *ngIf="usuarios.invalid && (usuarios.dirty || usuarios.touched)" style="font-size: 12px; margin: 0px;">
+                                                          <span *ngIf="usuarios.errors?.['required']">
+                                                            Este campo es requerido.
+                                                          </span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputEmail" class="col-sm-5 col-form-label">Email Institucional <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="email" class="form-control" id="inputEmail" maxlength="100" placeholder=""
+                                                  name="emailInstitu" #emailInstitu="ngModel" [(ngModel)]="formUsuario.emailInstitucional" [readonly]="isReadonly" [required]="esRequerido">
+                                                        <span *ngIf="emailInstitu.invalid && (emailInstitu.dirty || emailInstitu.touched)" style="font-size: 12px; margin: 0px;">
+                                                          <span *ngIf="emailInstitu.errors?.['required']">
+                                                            Este campo es requerido.
+                                                          </span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputTelefono" class="col-sm-5 col-form-label">Teléfono <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="number" class="form-control" id="inputTelefono" pattern="\d*" maxlength="10"  placeholder=""  (keypress)="numberOnly($event)"
+                                                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                  name="telefono" #telefono="ngModel" [(ngModel)]="formUsuario.telefono" [readonly]="isReadonly" [required]="esRequerido">
+                                                      <span *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" style="font-size: 12px; margin: 0px;">
+                                                        <span *ngIf="telefono.errors?.['required']">
+                                                          Este campo es requerido.
+                                                        </span>
+                                                      </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputExtension" class="col-sm-5 col-form-label">Extensión <span style="color: red;">*</span></label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="number" class="form-control" id="inputExtension" pattern="\d*" maxlength="5" placeholder=""  (keypress)="numberOnly($event)"
+                                                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                  name="extension" #extension="ngModel" [(ngModel)]="formUsuario.extensionTelefono" [readonly]="isReadonly" [required]="esRequerido">
+                                                        <span *ngIf="extension.invalid && (extension.dirty || extension.touched)" style="font-size: 12px; margin: 0px;">
+                                                          <span *ngIf="extension.errors?.['required']">
+                                                            Este campo es requerido.
+                                                          </span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <!-- Default input -->
+                                                <label for="inputCelular" class="col-sm-5 col-form-label" >Celular</label>
+                                                <div class="col-sm-7">
+                                                  <input mdbInput type="number" class="form-control" id="inputCelular" pattern="\d*" maxlength="10" placeholder=""  (keypress)="numberOnly($event)"
+                                                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                  name="celular" #celular="ngModel" [(ngModel)]="formUsuario.celular" [readonly]="isReadonly" >
+                                                       
+                                                </div>
+                                            </div>
+                                    </div>
+                                   
+                                    
+
+                                </div>
+
+                                <div class="row " >
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-1 mb-md-1 stycont">
+                                        <div class="row stycont">
+
+                                          
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont">
+                                            
+                                          </div>
+
+                                          
+                                          
+
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont" *ngIf="botonCancelar != true">                                            
+                                            <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="navegarActivar();"  outline="true"   mdbWavesEffect *ngIf='formUsuario.activo === "I"'>Regresar</button>
+                                          </div>
+
+                                          <div class="separador"></div>
+
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont" *ngIf="botonCancelar != true">
+                                            <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="editar()"  outline="true"   mdbWavesEffect >Editar</button>
+                                          </div>
+
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont" *ngIf="botonCancelar === true">
+                                            <button mdbBtn type="submit"  class="btn-block texto-medio boton-primario " [disabled]="formDetalle.invalid"   outline="true"   mdbWavesEffect >Actualizar</button>
+                                          </div>
+
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont" *ngIf="botonCancelar === true">
+                                            <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="cancelar()"  outline="true"   mdbWavesEffect >Cancelar</button>
+                                          </div>
+
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont" *ngIf="botonRegresar == true && botonCancelar != true">                                                                                        
+                                            <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="navegarInicio();"  outline="true"   mdbWavesEffect >Regresar</button>
+                                          </div>
+
+                                          <div class="separador"></div>
+                                      
+                                          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 stycont" *ngIf="botonCancelar != true">
+                                            <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="activarUsuario();"  outline="true"   mdbWavesEffect *ngIf='formUsuario.activo === "I"'>Activar</button>
+                                            
+                                            <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="navegarActivar();"  outline="true"   mdbWavesEffect *ngIf='formUsuario.activo === "A"'>Regresar</button>
+                                          </div>
+
+                                          
+
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>                          
+                        </div>
+                      </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>
+
+<div mdbModal #frameOk="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameOk.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>El usuario se ha activado correctamente
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameOk.hide(); navegarActivar();" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div mdbModal #frameFail="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameFail.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>El usuariono no se ha podido activar
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameFail.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+
+<div mdbModal #frameAct="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameAct.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>El usuario se ha actualizado correctamente
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameAct.hide(); " mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Guardando </p></ngx-spinner>

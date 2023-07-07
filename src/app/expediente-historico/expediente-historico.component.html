@@ -1,0 +1,160 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >            
+            <div class="container">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >{{flujo.tramite}}</p>
+                                <div style="height: 40px;"></div>
+
+                                <div class="row"  style="padding: 40px;">                                
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                                       
+                                        <span *ngIf="(flujo.idColorRia == null || flujo.idColorRia == 0) && flujo.idColor!=35">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12  col-lg-8 col-xl-8" >
+                                                </div>
+                                                <div class="col-12 col-md-12  col-lg-4 col-xl-4" style="text-align: center ;">
+                                                    <span style="font-size: 12px;">Estatus General</span>
+                                                    <br>
+                                                    <fa-icon [icon]="faCircle"    style="color: #008B37 ; font-size: 23px;"  *ngIf="flujo.idColor == 32"></fa-icon>
+                                                    <fa-icon [icon]="faCircle"    style="color: #F77A00 ; font-size: 23px;"  *ngIf="flujo.idColor == 34"></fa-icon>
+                                                    <fa-icon [icon]="faCircle"    style="color: #F70000 ; font-size: 23px;"  *ngIf="flujo.idColor == 33"></fa-icon>
+                                                </div>
+                                            </div>
+                                          </span >
+                                          <span *ngIf="(flujo.idColorRia !=null && flujo.idColorRia > 0) && flujo.idColorRia !=35">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12  col-lg-8 col-xl-8" >
+                                                </div>
+                                                <div class="col-12 col-md-12  col-lg-2 col-xl-2" style="text-align: center;">
+                                                  <span style="font-size: 12px;">Estatus General</span>
+                                                  <br>
+                                                  <fa-icon [icon]="faCircle"    style="color: #008B37 ; font-size: 23px;"  *ngIf="flujo.idColor == 32"></fa-icon>
+                                                  <fa-icon [icon]="faCircle"    style="color: #F77A00 ; font-size: 23px;"  *ngIf="flujo.idColor == 34"></fa-icon>
+                                                  <fa-icon [icon]="faCircle"    style="color: #F70000 ; font-size: 23px;"  *ngIf="flujo.idColor == 33"></fa-icon>
+                                                </div>
+                                                <div class="col-12 col-md-12  col-lg-2 col-xl-2" style="text-align: center;">
+                                                  <span style="font-size: 12px;">Estatus RIA</span>
+                                                  <br>
+                                                  <fa-icon [icon]="faCircle"    style="color: #008B37 ; font-size: 23px;"  *ngIf="flujo.idColorRia == 32"></fa-icon>
+                                                  <fa-icon [icon]="faCircle"    style="color: #F77A00 ; font-size: 23px;"  *ngIf="flujo.idColorRia == 34"></fa-icon>
+                                                  <fa-icon [icon]="faCircle"    style="color: #F70000 ; font-size: 23px;"  *ngIf="flujo.idColorRia == 33"></fa-icon>
+                                                </div>
+                                            </div>
+                                          </span>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row"  style="padding: 10px;">
+
+                                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 texto-primario texto-bajo">
+                                        Número de expediente:                                        
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 ">
+                                        {{flujo.folio}}                                       
+                                    </div>
+
+                                </div>
+
+                                
+                                                                
+                                <div class="row " style="padding: 10px;">
+                                    <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 texto-primario texto-bajo">
+                                            <div *ngFor="let sec of listaSecuencia">
+                                     
+                                                    <div *ngIf="sec.etapa != etapa && sec.etapa != etapag && sec.etapa != etapad">
+                                                            <div class="form-group row" >
+                                                                                                                                                                                    
+                                                                <label for="inputSujetoObligado" class="col-sm-5 col-form-label">{{sec.etapa}}:</label>
+                                                            
+                                                                <div class="col-sm-5" >
+                                                                    <input mdbInput 
+                                                                        type="text" 
+                                                                        class="form-control" 
+                                                                        id="inputSujetoObligado" 
+                                                                        maxlength="100" 
+                                                                        placeholder="" 
+                                                                        name="atributo"
+                                                                        #atributo="ngModel" 
+                                                                        [(ngModel)]="sec.fecha"                                                                                                                 
+                                                                        >                       
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2" style="padding-right: 130px;" *ngIf="iorigen == 2 ">
+                                                                    <i class="fa fa-file-pdf-o icono-descarga"   mdbTooltip="Descargar archivo"  (click)="descargar(sec.rutaArchivo,sec.etapa)" *ngIf="checarImagen(sec.rutaArchivo)== 'pdf'" >&nbsp;&nbsp;</i>
+                                                                    <i class="fa fa-file-archive-o icono-descarga" mdbTooltip="Descargar archivo" (click)="descargar(sec.rutaArchivo,sec.etapa)" *ngIf="checarImagen(sec.rutaArchivo)=='zip'" >&nbsp;&nbsp;</i>    
+                                                                    <i class="fa fa-file-word-o icono-descarga" mdbTooltip="Descargar archivo" (click)="descargar(sec.rutaArchivo,sec.etapa)" *ngIf="checarImagen(sec.rutaArchivo)=='docx'">&nbsp;&nbsp;</i>                                                                                         
+                                                                </div>
+
+                                                            </div>
+                                                    </div>                                            
+                                            </div>
+                                    </div>   
+                                                                                                            
+                                </div>
+
+                                <div class="row  texto-primario texto-bajo" *ngIf="iorigen == 2 && usuario.usuario.idPerfil == 1">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 5px;">
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 " style="padding-left:20px ;">
+                                                <label for="idmensaje" class=" col-form-label">Mensaje: </label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 ">                                                
+
+                                                <textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="smensaje" type="text" id="idmensaje" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" 
+                                                          class="md-textarea form-control" maxlength="5000" rows="5" mdbInput></textarea>
+                                                          {{smensaje==null?0:smensaje.length}}/5000                                                                                 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row"  style="margin-top: 50px ;">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">                                    
+                                        <div class="row" >
+                                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 "> 
+
+                                            </div>     
+
+                                            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 " *ngIf="iorigen == 2 && usuario.usuario.idPerfil == 1">
+                                                <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="guardar();" [disabled]="validaTexto()" outline="true"   mdbWavesEffect >Guardar Comentario</button>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 " *ngIf="iorigen == 2 && usuario.usuario.idPerfil != 1">
+                                                
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 " *ngIf="iorigen == 1 && usuario.usuario.idPerfil == 1">
+                                                
+                                            </div>
+                                           
+                                            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 " *ngIf="iorigen != 2 && usuario.usuario.idPerfil != 1 ">
+                                                
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 " >
+                                                <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="regresar();"  outline="true"   mdbWavesEffect >Regresar</button>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                      
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>

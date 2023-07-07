@@ -1,0 +1,63 @@
+<div class="abs-center">
+
+     
+    <form class="border p-3 form contenedor "  style="background-image: linear-gradient(to bottom, white,white); text-align: center;"  #formLogin="ngForm" (ngSubmit)="iniciarSesion()">
+        
+        <div style="height: 40px"></div>
+        <p class="h4 mb-4  texto-titulo texto-primario" >Iniciar Sesión</p>
+        <div class="separador"></div>
+
+        <div style="padding: 20px;">
+            <div class="col-auto">
+                <!-- Default input -->
+                <label class="sr-only  texto-medio texto-primario" for="inlineFormInputGroup">Usuario</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text  texto-medio " style="background-color: #AE105A; color: aliceblue"><i class="fa fa-user">&nbsp;</i></div>
+                  </div>
+                  <input mdbInput type="text" class="form-control py-0 texto-bajo" id="inlineFormInputGroup" 
+                  name="usuario" #usuario="ngModel" [(ngModel)]="user.usuario" placeholder="Usuario">
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Default input -->
+                <label class="sr-only  texto-medio texto-primario" for="inlineFormInputGroupd">Contraseña</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text  texto-medio " style="background-color: #AE105A; color: aliceblue"><i class="fa fa-asterisk"></i></div>
+                  </div>
+                  <input mdbInput type="password" class="form-control py-0 texto-bajo" id="inlineFormInputGroupd" 
+                  name="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" placeholder="Contraseña">
+                </div>
+                <div style="text-align: right; ">
+                  <a [routerLink]="['/recuperar']" style="font-size: 10px; color: black; font-family: Arial-bajo;">
+                   ¿Olvidaste tu contraseña? <i class="fa fa-lock" style="font-size: 12px;" ></i>
+                  </a>
+                </div>
+            </div>
+            <div style="height: 10px;"></div>
+            <div style="padding: 20px;">
+            <button mdbBtn type="submit"  class="btn-block texto-medio boton-primario" outline="true" mdbWavesEffect>Ingresar</button>
+          
+            <div style="height: 5px;"></div>
+            
+            <a [routerLink]="['/registrar']" style="font-size: 10px; color: black; font-family: Arial-bajo;">
+               Aún no cuentas con un usuario, Regístrese aquí
+            </a>
+          </div>
+        </div>
+
+         <div style="height: 20px;"></div>
+    </form>     
+</div>
+
+<!--<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+   <div class="modal-content gifcenterloading">
+    <img src="assets/imagenes/Loading.gif" >
+   </div>
+ </div>
+</div>-->
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Iniciando </p></ngx-spinner>

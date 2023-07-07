@@ -1,0 +1,188 @@
+<app-header></app-header>
+<div style="height: 50px;"></div>
+<div class="container-fluid ">
+    <div >
+        <div >            
+            <div class="container">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div>
+                            <div class="card-body  z-depth-4">
+                                <p class="h4 mb-4  texto-titulo texto-primario-center" >Alta de Notificación</p>
+                                <div style="height: 80px;"></div>
+
+                                
+
+                                <div class="row " style="padding: 40px;">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                                                <label for="idexpediente" class=" col-form-label">Expediente: <span style="color: red;">*</span></label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 ">
+                                                <input mdbInput type="text" class="form-control" id="idexpediente" maxlength="300" placeholder="" 
+                                                      name="expediente" #expediente="ngModel" [(ngModel)]="sexpediente" [readonly]="isReadonly">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 5px;">
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                                                <label for="idorigen" class=" col-form-label">De: <span style="color: red;">*</span></label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
+                                                <input mdbInput type="text" class="form-control" id="idorigen" maxlength="300" placeholder="" 
+                                                      name="origen" #origen="ngModel" [(ngModel)]="sorigen" readonly>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                
+                                            </div>
+                                    
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 5px;"  *ngIf="mostrarSelect == false">
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                                                <label for="idpara" class=" col-form-label">Para: <span style="color: red;">*</span></label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
+                                                <input mdbInput type="text" class="form-control" id="idpara" maxlength="300" placeholder="" 
+                                                      name="para" #para="ngModel" [(ngModel)]="selectedPara" readonly>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                
+                                            </div>
+                                    
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 5px;" *ngIf="mostrarSelect == true">
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                                                <label for="idorigen" class=" col-form-label">Para: <span style="color: red;">*</span></label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
+                                                <select class="browser-default custom-select" #para (change)="selectOpcion()" >
+                                                    <option value="">Selecciona destinatario</option>                                                   
+                                                    <option value="{{ad.idUsuario}}" *ngFor="let ad of listaNotificaciones">{{ad.para}}</option>                                                   
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                
+                                            </div>
+                                    
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 5px;">
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                                                <label for="idasunto" class=" col-form-label">Asunto: <span style="color: red;">*</span></label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 ">
+                                                <input mdbInput type="text" class="form-control" id="idasunto" maxlength="100" placeholder="" 
+                                                      name="asunto" #asunto="ngModel" [(ngModel)]="sasunto">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 5px;">
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 ">
+                                                <label for="idmensaje" class=" col-form-label">Mensaje: <span style="color: red;">*</span></label>
+                                            </div>
+                                            <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10 ">                                                
+
+                                                <textarea name="mensaje" #mensaje="ngModel" [(ngModel)]="smensaje" type="text" id="idmensaje" style="background-color: white; border-radius: 5px; border: 1px solid #9c9c9c" 
+                                                          class="md-textarea form-control" maxlength="5000" rows="5" mdbInput></textarea>
+                                                          {{smensaje.length}}/5000                                                                                 
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top: 5px;">
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 " style="text-align: right; cursor: pointer;">
+                                                {{upload.filename}}
+                                                <input type="file" class="file-input " (change)="onFileSelected($event)"
+                                                formControlName="upload" #fileUpload accept=".zip, .pdf">
+
+                                                <img src="assets/imagenes/clip.png" (click)="fileUpload.click()" class="figure-img img-fluid "
+                                                alt="..." style="width: 45px" mdbTooltip="Adjuntar archivo en formato .zip o .pdf con un tamaño máximo de 10 megas">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 stycont">
+                                        <div class="row">
+
+                                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 stycont">
+                                                
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 stycont">
+                                                <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="regresar();"  outline="true"   mdbWavesEffect >Regresar</button>                                                
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 stycont">                                                
+                                                <button mdbBtn type="button"  class="btn-block texto-medio boton-primario " (click)="enviarMensaje();"  outline="true"   mdbWavesEffect >Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                </div>
+
+                                
+                      
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 150px;"></div>
+<app-footer></app-footer>
+
+<div mdbModal #frameAlta="mdbModal" [config]="{backdrop: 'static'}" class="modal fade top" id="basicGreen"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow: auto;">
+  <div class="modal-dialog modal-lg  mymodalconfirm cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Header-->
+      <div class="modal-header  darken-3 white-text">
+        <h4 class="title" style="font-family: Gotham-medium;">
+          Aviso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="frameAlta.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body mb-0 text-center" style="font-family: Gotham-Book;">
+        <h5>La notificación se ha enviado correctamente
+        </h5>
+      </div>
+      <div style="font-family: Gotham-Book;">
+        
+        <div class="row " >
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+              <button mdbBtn type="button"  class=" texto-medio boton-primario" outline="true"  (click)="frameAlta.hide()" mdbWavesEffect>Aceptar</button>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 ">
+          </div>
+
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "white" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" class="texto-bajo"> Enviando </p></ngx-spinner>

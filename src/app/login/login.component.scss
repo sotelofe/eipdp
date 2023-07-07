@@ -1,0 +1,141 @@
+.backdrop{
+    background-color:rgba(0,0,0,0.6);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+  }
+  
+  .gifcenterloading{
+      align-items: center;  
+      background-color:transparent; 
+      border: none;
+      box-shadow: none !important;
+  }
+
+@media only screen and (max-width: 414px) {  
+  
+    .abs-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+    .form {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .p-inputgroup-addon{
+        background-color: rgb(240, 241, 241) !important;
+        color: gray;
+    }
+    
+    button{
+        background-color: rgb(183, 185, 185);
+        border-color: rgb(183, 185, 185);
+    }
+    
+    button:hover{
+        background-color: #515455 !important;
+        border-color: #515455 !important;
+    }  
+    
+    .separador{
+        height: 50px;
+        display: block;
+    }
+} 
+
+
+//Pantallas menores a 800 pixeles
+@media only screen and (max-width: 768px) {  
+  
+    
+    .form {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .p-inputgroup-addon{
+        background-color: rgb(240, 241, 241) !important;
+        color: gray;
+    }
+    
+    button{
+        background-color: rgb(183, 185, 185);
+        border-color: rgb(183, 185, 185);
+    }
+    
+    button:hover{
+        background-color: #515455 !important;
+        border-color: #515455 !important;
+    }   
+
+   
+} 
+
+//Pantalla de 800 pixeles en adelante
+@media only screen and (min-width: 768px) {  
+    .abs-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+    
+      .form {
+        width: 350px;
+        height: 390px;
+    }
+    
+    .contenedor{
+        background-color:white ;
+        box-shadow: 3px 3px 10px 5px rgba(0,0,0,.8);
+        -webkit-border-radius:5px;
+        -moz-border-radius:10px;
+        border-radius:10px;
+    }
+    
+    
+
+    .separador{
+        height: 10px;
+        display: block;
+    }
+} 
+
+textarea:focus,  input:focus, input[type]:focus {
+    border-color: #AE105A !important;
+    box-shadow: 0 1px 1px  #AE105A inset, #C15098 0 0 2px  !important;
+    outline: 0 none !important;
+}
+
+.texto-primario{
+    color: #AE105A !important;
+}
+
+.boton-primario{
+    color: #AE105A; 
+    border: 2px solid #AE105A;
+}
+
+.texto-titulo{
+    font-family: Gotham !important;
+    font-size: 35px !important;
+}
+
+.texto-medio{
+    font-family: Gotham-medium !important; 
+}
+
+.texto-bajo{
+    font-family: Gotham-Book !important; 
+}
+
+a:hover {
+    color: #AE105A !important;
+  }
+

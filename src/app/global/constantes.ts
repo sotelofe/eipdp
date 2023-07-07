@@ -1,0 +1,5 @@
+export var  Constantes = {
+    AyudaTitulo: "Se deberá seleccionar de entre alguna de las opciones indicadas, o bien, en caso de resultar aplicable, podrá seleccionar ambas. La falta de respuesta, no le permitirá continuar con el trámite.",
+    AyudaGeneral: "Se está ante un tratamiento intensivo o relevante general cuando concurran cada una de las siguientes condiciones: existan riesgos inherentes a los datos personales a tratar, se traten datos personales sensibles y se realicen transferencias de datos personales. Se deberá justificar la razón por la que se cumple con tales condiciones en el siguiente recuadro.",
+    AyudaParticular: "Se está ante un tratamiento intensivo o relevante particular cuando se actualicen alguno de los catorce supuestos específicos establecidos en el artículo 9 de las Disposiciones administrativas de carácter general para la elaboración, presentación y valoración de evaluaciones de impacto en la protección de datos personales. Se podrá seleccionar más de una opción justificando tal selección en el recuadro correspondiente.",
+};
